@@ -84,8 +84,17 @@ const Compose = () => import("@/views/apps/email/Compose");
 const Inbox = () => import("@/views/apps/email/Inbox");
 const Message = () => import("@/views/apps/email/Message");
 
-//Customized
+//developers Customized
 const DevValidationForms = () => import("@/views/developers/DevValidationForms");
+const MyApps = () => import("@/views/developers/MyApps");
+const AndroidUpLoad = () => import("@/views/developers/AndroidUpLoad");
+const iOSUpLoad = () => import("@/views/developers/iOSUpload");
+
+//managers Customized
+const ReviewApps = () => import("@/views/managers/ReviewApps");
+const ReviewDevelopers = () => import("@/views/managers/ReviewDevelopers");
+const ManageApps = () => import("@/views/managers/ManageApps");
+const ManageMembers = () => import("@/views/managers/ManageMembers");
 
 Vue.use(Router);
 
@@ -96,20 +105,67 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "/adminlogin",
-      name: "後台管理",
+      redirect: "/managers/reviewapps",
+      meta: { label: "後台管理" },
+      name: "Developers",
       component: DefaultContainer,
       children: [
         {
           path: "adminlogin",
-          name: "後台登入",
+          name: "Login",
           component: Login
         },
+
         {
-          path: "modprofile",
-          name: "修改個人資料",
+          path: "/managers/reviewapps",
+          meta: { label: "審核 Apps" },
+          name: "ReviewApps",
+          component: ReviewApps
+        },
+        {
+          path: "/managers/reviewdevelopers",
+          meta: { label: "審核開發者" },
+          name: "ReviewDevelopers",
+          component: ReviewDevelopers
+        },
+        {
+          path: "/managers/manageapps",
+          meta: { label: "管理 Apps" },
+          name: "ManageApps",
+          component: ManageApps
+        },
+        {
+          path: "/managers/managemembers",
+          meta: { label: "管理會員" },
+          name: "ManageMembers",
+          component: ManageMembers
+        },
+
+        {
+          path: "/developers/myapps",
+          meta: { label: "我的 Apps" },
+          name: "MyApps",
+          component: MyApps
+        },
+        {
+          path: "/developers/androidupload",
+          meta: { label: "Android 上傳" },
+          name: "AndroidUpLoad",
+          component: AndroidUpLoad
+        },
+        {
+          path: "/developers/iosupload",
+          meta: { label: "iOS 上傳" },
+          name: "iOSUpLoad",
+          component: iOSUpLoad
+        },
+        {
+          path: "/developers/modprofile",
+          meta: { label: "個人資料修改" },
+          name: "DevValidationForms",
           component: DevValidationForms
         },
+
         {
           path: "theme",
           redirect: "/theme/colors",
@@ -521,11 +577,11 @@ export default new Router({
           name: "Page500",
           component: Page500
         },
-        {
-          path: "login",
-          name: "Login",
-          component: Login
-        },
+        // {
+        //   path: "login",
+        //   name: "Login",
+        //   component: Login
+        // },
         {
           path: "register",
           name: "Register",
