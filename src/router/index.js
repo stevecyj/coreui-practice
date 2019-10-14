@@ -85,7 +85,7 @@ const Inbox = () => import("@/views/apps/email/Inbox");
 const Message = () => import("@/views/apps/email/Message");
 
 //developers Customized
-const DevValidationForms = () => import("@/views/developers/DevValidationForms");
+const ModProfile = () => import("@/views/developers/ModProfile");
 const MyApps = () => import("@/views/developers/MyApps");
 const AndroidUpLoad = () => import("@/views/developers/AndroidUpLoad");
 const iOSUpLoad = () => import("@/views/developers/iOSUpload");
@@ -162,8 +162,8 @@ export default new Router({
         {
           path: "/developers/modprofile",
           meta: { label: "個人資料修改" },
-          name: "DevValidationForms",
-          component: DevValidationForms
+          name: "modprofile",
+          component: ModProfile
         },
 
         {
