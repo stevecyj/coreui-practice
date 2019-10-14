@@ -214,15 +214,21 @@
             </div>
             <b-list-group>
               <b-list-group-item href="#" class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">下載次數</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
+                <b-media left-align vertical-align="center">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">List group item heading</h5>
+                    <small class="text-muted">下載次數 :</small>
+                  </div>
+                  <template v-slot:aside>
+                    <b-img src="https://fakeimg.pl/120x120/" width="120" alt="placeholder"></b-img>
+                  </template>
+                  <p class="mb-0">
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                    Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                    nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                  </p>
+                  <small class="text-muted">Donec id elit non mi porta.</small>
+                </b-media>
               </b-list-group-item>
             </b-list-group>
           </b-card>
