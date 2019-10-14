@@ -1,262 +1,363 @@
 <template>
-  <div class="wrapper">
-    <div class="animated fadeIn">
-      <b-row>
-        <!-- <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>Bootstrap list group</strong>
-              <div class="card-header-actions">
-                <a
-                  href="https://bootstrap-vue.js.org/docs/components/list-group"
-                  class="card-header-action"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  <small class="text-muted">docs</small>
-                </a>
-              </div>
-            </div>
-            <b-list-group>
-              <b-list-group-item>Cras justo odio</b-list-group-item>
-              <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>-->
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>active items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item>Cras justo odio</b-list-group-item>
-              <b-list-group-item active>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-      <!-- <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>disabled items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item disabled>Cras justo odio</b-list-group-item>
-              <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item disabled>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>actionable items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
-              <b-list-group-item href="#" active>Link with active state</b-list-group-item>
-              <b-list-group-item href="#">Action links are easy</b-list-group-item>
-              <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-      <!-- <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>buttons</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item button>Button item</b-list-group-item>
-              <b-list-group-item button>I am a button</b-list-group-item>
-              <b-list-group-item button disabled>Disabled button</b-list-group-item>
-              <b-list-group-item button>This is a button too</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>with badges</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Cras justo odio
-                <b-badge variant="primary" pill>14</b-badge>
-              </b-list-group-item>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <b-badge variant="primary" pill>2</b-badge>
-              </b-list-group-item>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <b-badge variant="primary" pill>1</b-badge>
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-      <!-- <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>variants</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item>This is a default list group item</b-list-group-item>
-              <b-list-group-item variant="primary">This is a primary list group item</b-list-group-item>
-              <b-list-group-item variant="secondary">This is a secondary list group item</b-list-group-item>
-              <b-list-group-item variant="success">This is a success list group item</b-list-group-item>
-              <b-list-group-item variant="danger">This is a danger list group item</b-list-group-item>
-              <b-list-group-item variant="warning">This is a warning list group item</b-list-group-item>
-              <b-list-group-item variant="info">This is a info list group item</b-list-group-item>
-              <b-list-group-item variant="light">This is a light list group item</b-list-group-item>
-              <b-list-group-item variant="dark">This is a dark list group item</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>variants active</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item href="#">This is a default list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="primary">This is a primary list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="secondary">This is a secondary list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="success">This is a success list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="danger">This is a danger list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="warning">This is a warning list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="info">This is a info list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="light">This is a light list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="dark">This is a dark list group item</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-      <!-- <b-row>
-        <b-col cols="12">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>inside cards</small>
-            </div>
-            <b-card-group deck>
-              <b-card>
-                <div slot="header">
-                  <b>Card with list group</b>
+  <div class="animated fadeIn">
+    <b-row>
+      <b-col md="8" offset-md="2">
+        <b-card>
+          <div slot="header">
+            <strong>iOS</strong> 上傳
+          </div>
+          <b-form>
+            <b-form-group description label="輸入您的 App 名稱" label-for="appName" :label-cols="3">
+              <b-form-input id="appName" type="text" autocomplete="name"></b-form-input>
+            </b-form-group>
+            <!-- <b-form-group label="Static" label-for="basicStatic" :label-cols="3">
+              <b-form-input plaintext id="basicStatic" type="text" value="Username"></b-form-input>
+            </b-form-group>-->
+            <!-- <b-form-group
+              description="This is a help text"
+              label="Text Input"
+              label-for="basicText"
+              :label-cols="3"
+            >
+              <b-form-input id="basicText" type="text" placeholder="Text"></b-form-input>
+            </b-form-group>-->
+            <!-- <b-form-group label="Date" label-for="date" :label-cols="3">
+              <b-form-input type="date" id="date"></b-form-input>
+            </b-form-group>-->
+            <!-- <b-form-group
+              description="Please enter your email"
+              label="Email Input"
+              label-for="basicEmail"
+              :label-cols="3"
+            >
+              <b-form-input
+                id="basicEmail"
+                type="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+              ></b-form-input>
+            </b-form-group>-->
+            <!-- <b-form-group
+              description="Please enter a complex password"
+              label="Password Input"
+              label-for="basicPassword"
+              :label-cols="3"
+            >
+              <b-form-input
+                id="basicPassword"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              ></b-form-input>
+            </b-form-group>-->
+            <!-- <b-form-group label="Disabled Input" label-for="basicInputDisabled" :label-cols="3">
+              <b-form-input
+                id="basicInputDisabled"
+                type="text"
+                :disabled="true"
+                placeholder="Disabled"
+              ></b-form-input>
+            </b-form-group>-->
+            <b-form-group label="簡介" label-for="summary" :label-cols="3">
+              <b-form-textarea id="summary" :rows="3" placeholder="請輸入簡介.."></b-form-textarea>
+            </b-form-group>
+            <b-form-group label="新功能" label-for="feature" :label-cols="3">
+              <b-form-textarea id="feature" :rows="9" placeholder="請輸入新功能.."></b-form-textarea>
+            </b-form-group>
+            <b-form-group label="詳細說明" label-for="description" :label-cols="3">
+              <b-form-textarea id="description" :rows="9" placeholder="請輸入詳細說明.."></b-form-textarea>
+            </b-form-group>
+            <!-- <b-form-group label="Select" label-for="basicSelect" :label-cols="3">
+              <b-form-select
+                id="basicSelect"
+                :plain="true"
+                :options="['Please select','Option 1', 'Option 2', 'Option 3']"
+                value="Please select"
+              ></b-form-select>
+            </b-form-group>-->
+            <!-- <b-form-group label="Select large" label-for="basicSelectLg" :label-cols="3">
+              <b-form-select
+                id="basicSelectLg"
+                size="lg"
+                :plain="true"
+                :options="['Please select','Option 1', 'Option 2', 'Option 3']"
+                value="Please select"
+              ></b-form-select>
+            </b-form-group>-->
+            <!-- <b-form-group label="Select small" label-for="basicSelectSm" :label-cols="3">
+              <b-form-select
+                id="basicSelectSm"
+                size="sm"
+                :plain="true"
+                :options="['Please select','Option 1', 'Option 2', 'Option 3']"
+                value="Please select"
+              ></b-form-select>
+            </b-form-group>-->
+            <!-- <b-form-group label="Disabled select" label-for="basicSelectDisabled" :label-cols="3">
+              <b-form-select
+                id="basicSelectDisabled"
+                :plain="true"
+                :options="['Please select','Option 1', 'Option 2', 'Option 3']"
+                :disabled="true"
+                value="Please select"
+              ></b-form-select>
+            </b-form-group>-->
+            <!-- <b-form-group label="Select" label-for="basicMultiSelect" :label-cols="3">
+              <b-form-select
+                id="basicMultiSelect"
+                :plain="true"
+                :multiple="true"
+                :options="[
+                {
+                  text: 'Please select some item',
+                  value: null
+                },
+                {
+                  text: 'This is First option',
+                  value: 'a'
+                }, {
+                  text: 'Default Selected Option',
+                  value: 'b'
+                }, {
+                  text: 'This is another option',
+                  value: 'c'
+                }, {
+                  text: 'This one is disabled',
+                  value: 'd',
+                  disabled: true
+                }]"
+                :value="[null,'c']"
+              ></b-form-select>
+            </b-form-group>-->
+            <!-- <b-form-group label="Radios" label-for="basicRadios" :label-cols="3">
+              <b-form-radio-group
+                id="basicRadios"
+                :plain="true"
+                :options="[
+                {text: 'Option 1 ',value: '1'},
+                {text: 'Option 2 ',value: '2'},
+                {text: 'Option 3 ',value: '3'}
+              ]"
+                checked="2"
+                stacked
+              ></b-form-radio-group>
+            </b-form-group>-->
+            <!-- <b-form-group label="Inline radios" label-for="basicInlineRadios" :label-cols="3">
+              <b-form-radio-group
+                id="basicInlineRadios"
+                :plain="true"
+                :options="[
+                {text: 'Option 1 ',value: '1'},
+                {text: 'Option 2 ',value: '2'},
+                {text: 'Option 3 ',value: '3'}
+              ]"
+                :checked="3"
+              ></b-form-radio-group>
+            </b-form-group>-->
+
+            <!-- <b-form-group label="Checkboxes" label-for="basicCheckboxes" :label-cols="3">
+              <b-form-checkbox-group
+                stacked
+                id="basicCheckboxes"
+                name="Checkboxes"
+                :plain="true"
+                :checked="[2,3]"
+              >
+                <b-form-checkbox value="1">Option 1</b-form-checkbox>
+                <b-form-checkbox value="2">Option 2</b-form-checkbox>
+                <b-form-checkbox value="3">Option 3</b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>-->
+            <!-- <b-form-group
+              label="Inline checkboxes"
+              label-for="basicInlineCheckboxes"
+              :label-cols="3"
+            >
+              <b-form-checkbox-group
+                id="basicInlineCheckboxes"
+                name="InlineCheckboxes"
+                :plain="true"
+                :checked="[1,3]"
+              >
+                <b-form-checkbox :plain="true" value="1">Option 1</b-form-checkbox>
+                <b-form-checkbox :plain="true" value="2">Option 2</b-form-checkbox>
+                <b-form-checkbox :plain="true" value="3">Option 3</b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>-->
+            <!--custom controls - radios/checkboxes - temporary fix-->
+            <!-- <b-form-group label="Radios - custom" label-for="basicRadiosCustom" :label-cols="3">
+              <b-form-radio-group id="basicRadiosCustom" value="1" stacked>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio1"
+                    name="customRadio"
+                    class="custom-control-input"
+                    value="1"
+                  />
+                  <label class="custom-control-label" for="customRadio1">Option 1</label>
                 </div>
-                <b-list-group>
-                  <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-                  <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-                  <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-                </b-list-group>
-                <p class="card-text mt-2">
-                  Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex
-                  nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua
-                  consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris
-                  ad sit ipsum anim Lorem.
-                </p>
-              </b-card>
-              <b-card no-body>
-                <div slot="header">
-                  <b>Card with flush list group</b>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio2"
+                    name="customRadio"
+                    class="custom-control-input"
+                    value="2"
+                    checked
+                  />
+                  <label class="custom-control-label" for="customRadio2">Option 2</label>
                 </div>
-                <b-list-group flush>
-                  <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-                  <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-                  <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-                </b-list-group>
-                <b-card-body>
-                  Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex
-                  nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua
-                  consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris
-                  ad sit ipsum anim Lorem.
-                </b-card-body>
-              </b-card>
-            </b-card-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-      <!-- <b-row>
-        <b-col md="12">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>custom content</small>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio3"
+                    name="customRadio"
+                    class="custom-control-input"
+                    value="3"
+                  />
+                  <label class="custom-control-label" for="customRadio3">Option 3</label>
+                </div>
+              </b-form-radio-group>
+            </b-form-group>-->
+            <!-- <b-form-group
+              label="Inline radios - custom"
+              label-for="basicCustomRadios1"
+              :label-cols="3"
+            >
+              <b-form-radio-group id="basicCustomRadios1" name="customRadioInline1">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="customRadioInline1"
+                    name="customRadioInline1"
+                    class="custom-control-input"
+                    value="1"
+                  />
+                  <label class="custom-control-label" for="customRadioInline1">Option 1</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="customRadioInline2"
+                    name="customRadioInline1"
+                    class="custom-control-input"
+                    value="2"
+                    checked
+                  />
+                  <label class="custom-control-label" for="customRadioInline2">Option 2</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    id="customRadioInline3"
+                    name="customRadioInline1"
+                    class="custom-control-input"
+                    value="3"
+                  />
+                  <label class="custom-control-label" for="customRadioInline3">Option 3</label>
+                </div>
+              </b-form-radio-group>
+            </b-form-group>-->
+            <!-- <b-form-group
+              label="Checkboxes - custom"
+              label-for="basicCustomCheckboxes"
+              :label-cols="3"
+            >
+              <b-form-checkbox-group stacked id="basicCustomCheckboxes">
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customChk1"
+                    value="1"
+                    checked
+                  />
+                  <label class="custom-control-label" for="customChk1">Option 1</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customChk2" value="2" />
+                  <label class="custom-control-label" for="customChk2">Option 2</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customChk3" value="3" />
+                  <label class="custom-control-label" for="customChk3">Option 3</label>
+                </div>
+              </b-form-checkbox-group>
+            </b-form-group>-->
+            <!-- <b-form-group
+              label="Inline checkboxes - custom"
+              label-for="basicInlineCustomCheckboxes"
+              :label-cols="3"
+            >
+              <b-form-checkbox-group id="basicInlineCustomCheckboxes">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="customInChk1" value="1" />
+                  <label class="custom-control-label" for="customInChk1">Option 1</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customInChk2"
+                    value="2"
+                    checked
+                  />
+                  <label class="custom-control-label" for="customInChk2">Option 2</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="customInChk3" value="3" />
+                  <label class="custom-control-label" for="customInChk3">Option 3</label>
+                </div>
+              </b-form-checkbox-group>
+            </b-form-group>-->
+            <b-form-group label="上傳 ICON" label-for="fileInput" :label-cols="3">
+              <b-form-file id="fileInput" :plain="true"></b-form-file>
+            </b-form-group>
+
+            <b-form-group label="上傳截圖" label-for="fileInputMulti" :label-cols="3">
+              <b-form-file id="fileInputMulti" :plain="true" :multiple="true"></b-form-file>
+            </b-form-group>
+
+            <div slot="footer">
+              <b-button type="submit" size="sm" variant="primary">
+                <i class="fa fa-dot-circle-o"></i> Submit
+              </b-button>
+              <b-button type="reset" size="sm" variant="danger">
+                <i class="fa fa-ban"></i> Reset
+              </b-button>
             </div>
-            <b-list-group>
-              <b-list-group-item href="#" active class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small>Donec id elit non mi porta.</small>
-              </b-list-group-item>
-              <b-list-group-item href="#" class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </b-list-group-item>
-              <b-list-group-item href="#" disabled class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Disabled List group item</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-    </div>
+          </b-form>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
 <script>
 export default {
-  name: "list-groups"
+  name: "forms",
+  data() {
+    return {
+      selected: [], // Must be an array reference!
+      show: true
+    };
+  },
+  methods: {
+    click() {
+      // do nothing
+    }
+  }
 };
 </script>
 
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

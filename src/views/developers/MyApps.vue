@@ -212,21 +212,22 @@
               <strong>我的 Apps 下載排行</strong>
               <small>custom content</small>
             </div>
-            <b-list-group>
+            <b-list-group v-for="event in events" v-bind:key="event.id">
               <b-list-group-item href="#" class="flex-column align-items-start">
                 <b-media left-align vertical-align="center">
                   <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small class="text-muted">下載次數 :</small>
+                    <h5 class="mb-1">{{event.appName}}</h5>
+                    <small class="text-muted">下載次數 :{{event.downloadTimes}}</small>
                   </div>
                   <template v-slot:aside>
-                    <b-img src="https://fakeimg.pl/120x120/" width="120" alt="placeholder"></b-img>
+                    <b-img
+                      v-bind:src="event.appIcon"
+                      class="img-circle"
+                      width="120"
+                      alt="placeholder"
+                    ></b-img>
                   </template>
-                  <p class="mb-0">
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                    Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                    nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                  </p>
+                  <p class="mb-0">{{event.summary}}</p>
                   <small class="text-muted">Donec id elit non mi porta.</small>
                 </b-media>
               </b-list-group-item>
@@ -240,7 +241,22 @@
 
 <script>
 export default {
-  name: "list-groups"
+  // name: "list-groups"
+  data() {
+    return {
+      events: []
+    };
+  },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/api/develop/appRank/2")
+      .then(response => {
+        this.events = response.data;
+      })
+      .catch(error => {
+        console.log("There was an error:", error.response);
+      });
+  }
 };
 </script>
 
