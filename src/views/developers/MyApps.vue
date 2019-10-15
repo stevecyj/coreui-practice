@@ -1,6 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="animated fadeIn">
+      <div>
+        <transition name="fade">
+          <loading v-if="isLoading"></loading>
+        </transition>
+      </div>
       <b-row>
         <b-col md="12">
           <b-card header-tag="header" footer-tag="footer">
@@ -37,11 +42,16 @@
 </template>
 
 <script>
+import Loading from "@/views/loading";
 export default {
+  components: {
+    Loading
+  },
   // name: "list-groups"
   data() {
     return {
-      events: []
+      events: [],
+      isLoading: true
     };
   },
   created() {
@@ -49,11 +59,35 @@ export default {
       .get("http://127.0.0.1:8000/api/develop/appRank/2")
       .then(response => {
         this.events = response.data;
+        this.isLoading = false;
       })
       .catch(error => {
         console.log("There was an error:", error.response);
       });
+  },
+  mounted() {
+    const me = this;
+    // 初始化页面数据
+    // me.loadPageData();
+    this.isLoading = true;
+  },
+  methods: {
+    loadPageData: function() {
+      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
+      this.axios
+        .get("http://127.0.0.1:8000/api/develop/appRank/2")
+        .then((this.isLoading = false));
+    }
   }
 };
 </script>
-
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

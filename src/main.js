@@ -15,11 +15,14 @@ import VueAxios from "vue-axios";
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 /* eslint-disable no-new */
-new Vue({
+window.a = new Vue({
   el: "#app",
   router,
   template: "<App/>",
   components: {
     App
+  },
+  data: {
+    identity: 1
   }
 });
