@@ -8,8 +8,14 @@
           </div>
           <b-form>
             <b-form-group description label="輸入您的 App 名稱" label-for="appName" :label-cols="3">
-              <b-form-input id="appName" type="text" autocomplete="name"></b-form-input>
+              <b-form-input id="appName" type="text" autocomplete="name" placeholder="請輸入 App 名稱"></b-form-input>
             </b-form-group>
+
+            <b-form-group description label="輸入您的 App 名稱" label-for="appName" :label-cols="3">
+              <b-form-input id="appName" type="text" autocomplete="name" placeholder="請輸入 App 名稱"></b-form-input>
+              <b-form-input id="appName" type="text" autocomplete="name" placeholder="請輸入 App 名稱"></b-form-input>
+            </b-form-group>
+
             <!-- <b-form-group label="Static" label-for="basicStatic" :label-cols="3">
               <b-form-input plaintext id="basicStatic" type="text" value="Username"></b-form-input>
             </b-form-group>-->
