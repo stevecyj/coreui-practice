@@ -4,7 +4,7 @@
       <b-col md="8" offset-md="2">
         <b-card>
           <div slot="header">
-            <strong>iOS</strong> 上傳
+            <strong>Android</strong> 上傳
           </div>
           <b-form>
             <b-form-group description label="輸入您的 App 名稱" label-for="appName" :label-cols="3">
@@ -311,12 +311,16 @@
                 </div>
               </b-form-checkbox-group>
             </b-form-group>-->
-            <b-form-group label="上傳 ICON" label-for="fileInput" :label-cols="3">
-              <b-form-file id="fileInput" :plain="true"></b-form-file>
+            <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
+              <b-form-file id="fileInputIcon" :plain="true"></b-form-file>
             </b-form-group>
 
-            <b-form-group label="上傳截圖" label-for="fileInputMulti" :label-cols="3">
-              <b-form-file id="fileInputMulti" :plain="true" :multiple="true"></b-form-file>
+            <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
+              <b-form-file id="screenShot1" :plain="true"></b-form-file>
+            </b-form-group>
+
+            <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
+              <b-form-file id="screenShot2" :plain="true"></b-form-file>
             </b-form-group>
 
             <div slot="footer">

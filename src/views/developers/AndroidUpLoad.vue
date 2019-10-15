@@ -311,12 +311,16 @@
                 </div>
               </b-form-checkbox-group>
             </b-form-group>-->
-            <b-form-group label="上傳 ICON" label-for="fileInput" :label-cols="3">
-              <b-form-file id="fileInput" :plain="true"></b-form-file>
+            <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
+              <b-form-file id="fileInputIcon" :plain="true"></b-form-file>
             </b-form-group>
 
-            <b-form-group label="上傳截圖" label-for="fileInputMulti" :label-cols="3">
-              <b-form-file id="fileInputMulti" :plain="true" :multiple="true"></b-form-file>
+            <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
+              <b-form-file id="screenShot1" :plain="true"></b-form-file>
+            </b-form-group>
+
+            <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
+              <b-form-file id="screenShot2" :plain="true"></b-form-file>
             </b-form-group>
 
             <div slot="footer">
