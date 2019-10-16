@@ -52,6 +52,12 @@
               <b-form-input id="tags5" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
             </b-form-group>
             <hr />
+
+            <b-form-group label="分類：" label-for="category" :label-cols="3">
+              <b-form-select id="category" :rows="3" v-model="selected" :options="options"></b-form-select>
+            </b-form-group>
+
+            <hr />
             <b-form-group label="簡介：" label-for="summary" :label-cols="3">
               <b-form-textarea id="summary" :rows="3" placeholder="請輸入簡介(50字以內)"></b-form-textarea>
             </b-form-group>
@@ -96,7 +102,15 @@ export default {
   name: "forms",
   data() {
     return {
-      selected: [], // Must be an array reference!
+      options: [
+        { value: null, text: "請選擇分類" },
+        { value: "game", text: "遊戲" },
+        { value: "music", text: "音樂" },
+        { value: "food", text: "美食" },
+        { value: "photo", text: "照片" },
+        { value: "tool", text: "工具" }
+      ],
+      selected: null,
       show: true
     };
   },
