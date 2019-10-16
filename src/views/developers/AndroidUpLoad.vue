@@ -8,7 +8,14 @@
           </div>
           <b-form>
             <b-form-group description label="輸入 App 名稱：" label-for="appName" label-cols-lg="3">
-              <b-form-input id="appName" type="text" placeholder="請輸入 App 名稱"></b-form-input>
+              <b-form-input
+                id="appName"
+                type="text"
+                placeholder="請輸入 App 名稱"
+                pattern=".{1,50}"
+                required
+                v-model.lazy="input.appName"
+              ></b-form-input>
             </b-form-group>
             <hr />
             <b-form-group
@@ -17,7 +24,13 @@
               label-align-sm="left"
               label-for="tags1"
             >
-              <b-form-input id="tags1" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input
+                id="tags1"
+                type="text"
+                placeholder="請輸入 tag 名稱，2~4字以內"
+                pattern="\s\W{2,4}"
+                v-model.lazy="input.tag1"
+              ></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -25,7 +38,13 @@
               label-align-sm="left"
               label-for="tags2"
             >
-              <b-form-input id="tags2" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input
+                id="tags2"
+                type="text"
+                placeholder="請輸入 tag 名稱，2~4字以內"
+                pattern="\s\W{2,4}"
+                v-model.lazy="input.tag2"
+              ></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -33,7 +52,13 @@
               label-align-sm="left"
               label-for="tags3"
             >
-              <b-form-input id="tags3" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input
+                id="tags3"
+                type="text"
+                placeholder="請輸入 tag 名稱，2~4字以內"
+                pattern="\s\W{2,4}"
+                v-model.lazy="input.tag3"
+              ></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -41,7 +66,13 @@
               label-align-sm="left"
               label-for="tags4"
             >
-              <b-form-input id="tags4" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input
+                id="tags4"
+                type="text"
+                placeholder="請輸入 tag 名稱，2~4字以內"
+                pattern="\s\W{2,4}"
+                v-model.lazy="input.tag4"
+              ></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -49,7 +80,13 @@
               label-align-sm="left"
               label-for="tags5"
             >
-              <b-form-input id="tags5" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input
+                id="tags5"
+                type="text"
+                placeholder="請輸入 tag 名稱，2~4字以內"
+                pattern="\s\W{2,4}"
+                v-model.lazy="input.tag5"
+              ></b-form-input>
             </b-form-group>
             <hr />
 
@@ -59,15 +96,35 @@
 
             <hr />
             <b-form-group label="簡介：" label-for="summary" :label-cols="3">
-              <b-form-textarea id="summary" :rows="3" placeholder="請輸入簡介(50字以內)"></b-form-textarea>
+              <b-form-textarea
+                id="summary"
+                :rows="3"
+                placeholder="請輸入簡介(50字以內)"
+                pattern=".{1,50}"
+                required
+                v-model.lazy="input.summary"
+              ></b-form-textarea>
             </b-form-group>
             <hr />
             <b-form-group label="版本號：" label-for="changeNum" :label-cols="3">
-              <b-form-input id="changeNum" placeholder="X.X.X"></b-form-input>
+              <b-form-input
+                id="changeNum"
+                placeholder="X.X.X"
+                pattern="^[0-1]\.[0-9]*\.[0-9]$"
+                required
+                v-model.lazy="input.version"
+              ></b-form-input>
             </b-form-group>
             <hr />
             <b-form-group label="詳細說明：" label-for="introduction" :label-cols="3">
-              <b-form-textarea id="introduction" :rows="9" placeholder="請輸入詳細說明(200字以內)"></b-form-textarea>
+              <b-form-textarea
+                id="introduction"
+                :rows="9"
+                placeholder="請輸入詳細說明(200字以內)"
+                pattern=".{1,200}"
+                required
+                v-model.lazy="input.introduction"
+              ></b-form-textarea>
             </b-form-group>
 
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
@@ -83,10 +140,10 @@
             </b-form-group>
             <hr />
             <div slot="footer">
-              <b-button type="submit" size="sm" variant="primary">
+              <b-button type="submit" size="sm" variant="primary" @click="click">
                 <i class="fa fa-dot-circle-o"></i> Submit
               </b-button>
-              <b-button type="reset" size="sm" variant="danger">
+              <b-button type="reset" size="sm" variant="danger" @click="clear">
                 <i class="fa fa-ban"></i> Reset
               </b-button>
             </div>
@@ -111,12 +168,51 @@ export default {
         { value: "tool", text: "工具" }
       ],
       selected: null,
-      show: true
+      show: true,
+      input: {
+        appName: "",
+        summary: "",
+        introduction: "",
+        version: "",
+        tags: []
+      }
     };
+  },
+  mounted() {
+    const me = this;
+    // 初始化页面数据
+    // me.loadPageData();
+    this.isLoading = true;
+  },
+  created() {
+    this.axios
+      .get("http://127.0.0.1:8000/api/develop/categories")
+      .then(response => {
+        this.events = response.data;
+        this.isLoading = false;
+      })
+      .catch(error => {
+        console.log("There was an error:", error.response);
+      });
   },
   methods: {
     click() {
       // do nothing
+    },
+    clear() {
+      this.input = {
+        appName: "",
+        summary: "",
+        introduction: "",
+        version: "",
+        tags: []
+      };
+    },
+    loadPageData: function() {
+      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
+      this.axios
+        .get("http://127.0.0.1:8000/api/develop/categories")
+        .then((this.isLoading = false));
     }
   }
 };
