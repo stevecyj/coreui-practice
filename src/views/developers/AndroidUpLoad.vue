@@ -56,8 +56,8 @@
               <b-form-textarea id="summary" :rows="3" placeholder="請輸入簡介(50字以內)"></b-form-textarea>
             </b-form-group>
             <hr />
-            <b-form-group label="新功能：" label-for="changelog" :label-cols="3">
-              <b-form-textarea id="changelog" :rows="9" placeholder="請輸入新功能(200字以內)"></b-form-textarea>
+            <b-form-group label="版本號：" label-for="changeNum" :label-cols="3">
+              <b-form-input id="changeNum" placeholder="X.X.X"></b-form-input>
             </b-form-group>
             <hr />
             <b-form-group label="詳細說明：" label-for="introduction" :label-cols="3">
