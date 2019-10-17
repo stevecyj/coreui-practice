@@ -6,7 +6,7 @@
           <div slot="header">
             <strong>Android</strong> 上傳
           </div>
-          <b-form>
+          <b-form >
             <b-form-group description label="輸入 App 名稱：" label-for="appName" label-cols-lg="3">
               <b-form-input
                 id="appName"
@@ -129,35 +129,21 @@
 
             <hr />
             <b-form-group label="上傳 App" label-for="fileInputApp" :label-cols="3">
-              <b-form-file id="fileInputApp" :plain="true"></b-form-file>
+              <!-- <b-form-file id="file" v-model="file" plain ref="file"  accept=".apk"></b-form-file> -->
+              <input type="file" id="file" ref="file" />
             </b-form-group>
             <hr />
 
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
-              <b-form-file
-                id="fileInputIcon"
-                :plain="true"
-                v-model="icon"
-                accept=".jpg, .png, .gif, .jpeg"
-              ></b-form-file>
+              <b-form-file id="fileInputIcon" plain v-model="icon" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
             </b-form-group>
             <hr />
             <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
-              <b-form-file
-                id="screenShot1"
-                :plain="true"
-                v-model="img1"
-                accept=".jpg, .png, .gif, .jpeg"
-              ></b-form-file>
+              <b-form-file id="screenShot1" plain v-model="img1" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
             </b-form-group>
 
             <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
-              <b-form-file
-                id="screenShot2"
-                :plain="true"
-                v-model="img2"
-                accept=".jpg, .png, .gif, .jpeg"
-              ></b-form-file>
+              <b-form-file id="screenShot2" plain v-model="img2" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
             </b-form-group>
             <hr />
             <div slot="footer">
@@ -183,6 +169,7 @@ export default {
       options: [],
       selected: null,
       show: true,
+      file: null,
       icon: null,
       img1: null,
       img2: null,
@@ -215,38 +202,39 @@ export default {
         console.log("There was an error:", error.response);
       });
   },
-  created() {
-    // const _this = this;
-    // this.axios
-    //   .get("http://127.0.0.1 :8000/api/develop/categories")
-    //   .then(response => {
-    //     this.options = response.data;
-    //     console.log(this.options[0]);
-    //     // this.options.value = response.data[0].id;
-    //     // this.options.text = response.data[0].category;
-    //     // console.log(this.options.text);
-    //     // console.log(this.options.value);
-    //     this.isLoading = false;
-    //   })
-    //   .catch(error => {
-    //     console.log("There was an error:", error.response);
-    //   });
-  },
+  // created() {
+  // const _this = this;
+  // this.axios
+  //   .get("http://127.0.0.1 :8000/api/develop/categories")
+  //   .then(response => {
+  //     this.options = response.data;
+  //     console.log(this.options[0]);
+  //     // this.options.value = response.data[0].id;
+  //     // this.options.text = response.data[0].category;
+  //     // console.log(this.options.text);
+  //     // console.log(this.options.value);
+  //     this.isLoading = false;
+  //   })
+  //   .catch(error => {
+  //     console.log("There was an error:", error.response);
+  //   });
+  // },
   methods: {
     click() {
-      // let {appName, summary,introduction, version, tags,} = this.input;
+      let formData = new FormData();
+      this.file = this.$refs.file.files[0];
+      console.log(this.file);
+      formData.append("input", this.input);
+      formData.append("file", this.file);
+      // formData.append("icon", this.icon);
+      // formData.append("img1", this.img1);
+      // formData.append("img2", this.img2);
+      const config = {
+        header: { "Content-Type": "multipart/form-data" }
+      };
       this.axios
-        .post("http://127.0.0.1:8000/api/develop/Android", {
-          appName: this.input.appName,
-          summary: this.input.summary,
-          introduction: this.input.introduction,
-          version: this.input.version,
-          tags: this.input.tags,
-          value: this.selected,
-          file: this.file,
-          icon: this.icon,
-          img1: this.img1,
-          img2: this.img2
+        .post("http://127.0.0.1:8000/api/develop/Android", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
           console.log(res.data);
@@ -256,13 +244,14 @@ export default {
         });
     },
     clear() {
-      this.input = {
-        appName: "",
-        summary: "",
-        introduction: "",
-        version: "",
-        tags: []
-      };
+      (this.selected = ""),
+        (this.input = {
+          appName: "",
+          summary: "",
+          introduction: "",
+          version: "",
+          tags: []
+        });
     },
     loadPageData: function() {
       // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
@@ -270,6 +259,9 @@ export default {
         .get("http://127.0.0.1:8000/api/develop/categories")
         .then((this.isLoading = false));
     }
+    // fileChange:function(e){
+    //   this.file = e.target.files[0];
+    // }
     // iconUp(e) {
     //   this.icon = e.target.file;
     //   console.log(this.icon);
