@@ -70,6 +70,12 @@
               <b-form-textarea id="introduction" :rows="9" placeholder="請輸入詳細說明(200字以內)"></b-form-textarea>
             </b-form-group>
 
+            <hr />
+            <b-form-group label="上傳 App" label-for="fileInputApp" :label-cols="3">
+              <b-form-file id="fileInputApp" :plain="true"></b-form-file>
+            </b-form-group>
+            <hr />
+
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
               <b-form-file id="fileInputIcon" :plain="true"></b-form-file>
             </b-form-group>
