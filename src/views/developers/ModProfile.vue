@@ -19,38 +19,9 @@
         <cite>輸入是否正確</cite>
         <hr />
         <b-row>
-          <b-col lg="6" offset="3">
+          <b-col lg="8" offset>
             <!--<h6>Simple Form</h6>-->
             <b-form v-on:submit.prevent="onSubmit" v-on:reset.prevent="onReset" novalidate>
-              <!-- <b-form-group id="firstNameInputGroup1" label="First Name" label-for="firstname">
-                <b-form-input
-                  id="firstName"
-                  type="text"
-                  v-model.lazy.trim="$v.form.firstName.$model"
-                  :state="chkState('firstName')"
-                  aria-describedby="input1LiveFeedback1"
-                  placeholder="First Name"
-                  autocomplete="given-name"
-                  autofocus
-                />
-                <b-form-invalid-feedback
-                  id="input1LiveFeedback1"
-                >This is a required field and must be at least 2 characters</b-form-invalid-feedback>
-              </b-form-group>-->
-              <!-- <b-form-group id="lastNameInputGroup2" label="Last Name" label-for="lastName">
-                <b-form-input
-                  id="lastName"
-                  type="text"
-                  v-model.lazy.trim="$v.form.lastName.$model"
-                  :state="chkState('lastName')"
-                  aria-describedby="input1LiveFeedback2"
-                  placeholder="Last Name"
-                  autocomplete="family-name"
-                />
-                <b-form-invalid-feedback
-                  id="input1LiveFeedback2"
-                >This is a required field and must be at least 1 character</b-form-invalid-feedback>
-              </b-form-group>-->
               <b-form-group id="userNameInputGroup3" label="名稱" label-for="userName">
                 <b-form-input
                   id="userName"
