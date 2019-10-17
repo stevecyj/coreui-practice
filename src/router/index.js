@@ -105,17 +105,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "/managers/reviewapps",
+      redirect: "/pages/login",
       meta: { label: "後台管理" },
       name: "Developers",
       component: DefaultContainer,
       children: [
-        {
-          path: "adminlogin",
-          name: "Login",
-          component: Login
-        },
-
         {
           path: "/managers/reviewapps",
           meta: { label: "審核 Apps" },
@@ -577,11 +571,11 @@ export default new Router({
           name: "Page500",
           component: Page500
         },
-        // {
-        //   path: "login",
-        //   name: "Login",
-        //   component: Login
-        // },
+        {
+          path: "login",
+          name: "Login",
+          component: Login
+        },
         {
           path: "register",
           name: "Register",
