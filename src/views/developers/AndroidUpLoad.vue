@@ -28,8 +28,8 @@
                 id="tags1"
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
-                pattern="\s\W{2,4}"
-                v-model.lazy="input.tag1"
+                pattern="\D{2,4}"
+                v-model.lazy="input.tags[0]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -42,8 +42,8 @@
                 id="tags2"
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
-                pattern="\s\W{2,4}"
-                v-model.lazy="input.tag2"
+                pattern="\D{2,4}"
+                v-model.lazy="input.tags[1]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -56,8 +56,8 @@
                 id="tags3"
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
-                pattern="\s\W{2,4}"
-                v-model.lazy="input.tag3"
+                pattern="\D{2,4}"
+                v-model.lazy="input.tags[2]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -70,8 +70,8 @@
                 id="tags4"
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
-                pattern="\s\W{2,4}"
-                v-model.lazy="input.tag4"
+                pattern="\D{2,4}"
+                v-model.lazy="input.tags[3]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -84,8 +84,8 @@
                 id="tags5"
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
-                pattern="\s\W{2,4}"
-                v-model.lazy="input.tag5"
+                pattern="\D{2,4}"
+                v-model.lazy="input.tags[4]"
               ></b-form-input>
             </b-form-group>
             <hr />
@@ -128,22 +128,37 @@
             </b-form-group>
 
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
-              <b-form-file id="fileInputIcon" :plain="true"></b-form-file>
+              <b-form-file
+                id="fileInputIcon"
+                :plain="true"
+                v-model="icon"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
             </b-form-group>
             <hr />
             <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
-              <b-form-file id="screenShot1" :plain="true"></b-form-file>
+              <b-form-file
+                id="screenShot1"
+                :plain="true"
+                v-model="img1"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
             </b-form-group>
 
             <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
-              <b-form-file id="screenShot2" :plain="true"></b-form-file>
+              <b-form-file
+                id="screenShot2"
+                :plain="true"
+                v-model="img2"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
             </b-form-group>
             <hr />
             <div slot="footer">
-              <b-button type="submit" size="sm" variant="primary" @click="click">
+              <b-button type="submit" size="sm" variant="primary" v-on:click="click">
                 <i class="fa fa-dot-circle-o"></i> Submit
               </b-button>
-              <b-button type="reset" size="sm" variant="danger" @click="clear">
+              <b-button type="reset" size="sm" variant="danger" v-on:click="clear">
                 <i class="fa fa-ban"></i> Reset
               </b-button>
             </div>
@@ -159,16 +174,12 @@ export default {
   name: "forms",
   data() {
     return {
-      options: [
-        { value: null, text: "請選擇分類" },
-        { value: "game", text: "遊戲" },
-        { value: "music", text: "音樂" },
-        { value: "food", text: "美食" },
-        { value: "photo", text: "照片" },
-        { value: "tool", text: "工具" }
-      ],
+      options: [],
       selected: null,
       show: true,
+      icon: null,
+      img1: null,
+      img2: null,
       input: {
         appName: "",
         summary: "",
@@ -183,21 +194,60 @@ export default {
     // 初始化页面数据
     // me.loadPageData();
     this.isLoading = true;
-  },
-  created() {
+
     this.axios
       .get("http://127.0.0.1:8000/api/develop/categories")
       .then(response => {
-        this.events = response.data;
+        this.options = response.data;
+        for (let i = 0; i < response.data.length; i++) {
+          this.options[i].text = response.data[i].category;
+          this.options[i].value = response.data[i].id;
+        }
         this.isLoading = false;
       })
       .catch(error => {
         console.log("There was an error:", error.response);
       });
   },
+  created() {
+    // const _this = this;
+    // this.axios
+    //   .get("http://127.0.0.1 :8000/api/develop/categories")
+    //   .then(response => {
+    //     this.options = response.data;
+    //     console.log(this.options[0]);
+    //     // this.options.value = response.data[0].id;
+    //     // this.options.text = response.data[0].category;
+    //     // console.log(this.options.text);
+    //     // console.log(this.options.value);
+    //     this.isLoading = false;
+    //   })
+    //   .catch(error => {
+    //     console.log("There was an error:", error.response);
+    //   });
+  },
   methods: {
     click() {
-      // do nothing
+      // let {appName, summary,introduction, version, tags,} = this.input;
+      this.axios
+        .post("http://127.0.0.1:8000/api/develop/Android", {
+          appName: this.input.appName,
+          summary: this.input.summary,
+          introduction: this.input.introduction,
+          version: this.input.version,
+          tags: this.input.tags,
+          value: this.selected,
+          file: this.file,
+          icon: this.icon,
+          img1: this.img1,
+          img2: this.img2
+        })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
     clear() {
       this.input = {
@@ -214,6 +264,10 @@ export default {
         .get("http://127.0.0.1:8000/api/develop/categories")
         .then((this.isLoading = false));
     }
+    // iconUp(e) {
+    //   this.icon = e.target.file;
+    //   console.log(this.icon);
+    // }
   }
 };
 </script>
