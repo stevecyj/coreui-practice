@@ -135,6 +135,7 @@
             <hr />
 
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
+<<<<<<< HEAD
               <b-form-file id="fileInputIcon" plain v-model="icon" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
             </b-form-group>
             <hr />
@@ -144,6 +145,32 @@
 
             <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
               <b-form-file id="screenShot2" plain v-model="img2" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
+=======
+              <b-form-file
+                id="fileInputIcon"
+                :plain="true"
+                v-model="icon"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
+            </b-form-group>
+            <hr />
+            <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
+              <b-form-file
+                id="screenShot1"
+                :plain="true"
+                v-model="img1"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
+            </b-form-group>
+
+            <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
+              <b-form-file
+                id="screenShot2"
+                :plain="true"
+                v-model="img2"
+                accept=".jpg, .png, .gif, .jpeg"
+              ></b-form-file>
+>>>>>>> d78528a0595b7231724bea3f5a8d56889becd0e0
             </b-form-group>
             <hr />
             <div slot="footer">
@@ -169,7 +196,10 @@ export default {
       options: [],
       selected: null,
       show: true,
+<<<<<<< HEAD
       file: null,
+=======
+>>>>>>> d78528a0595b7231724bea3f5a8d56889becd0e0
       icon: null,
       img1: null,
       img2: null,
@@ -202,6 +232,7 @@ export default {
         console.log("There was an error:", error.response);
       });
   },
+<<<<<<< HEAD
   // created() {
   // const _this = this;
   // this.axios
@@ -235,6 +266,40 @@ export default {
       this.axios
         .post("http://127.0.0.1:8000/api/develop/Android", formData, {
           headers: { "Content-Type": "multipart/form-data" }
+=======
+  created() {
+    // const _this = this;
+    // this.axios
+    //   .get("http://127.0.0.1 :8000/api/develop/categories")
+    //   .then(response => {
+    //     this.options = response.data;
+    //     console.log(this.options[0]);
+    //     // this.options.value = response.data[0].id;
+    //     // this.options.text = response.data[0].category;
+    //     // console.log(this.options.text);
+    //     // console.log(this.options.value);
+    //     this.isLoading = false;
+    //   })
+    //   .catch(error => {
+    //     console.log("There was an error:", error.response);
+    //   });
+  },
+  methods: {
+    click() {
+      // let {appName, summary,introduction, version, tags,} = this.input;
+      this.axios
+        .post("http://127.0.0.1:8000/api/develop/Android", {
+          appName: this.input.appName,
+          summary: this.input.summary,
+          introduction: this.input.introduction,
+          version: this.input.version,
+          tags: this.input.tags,
+          value: this.selected,
+          file: this.file,
+          icon: this.icon,
+          img1: this.img1,
+          img2: this.img2
+>>>>>>> d78528a0595b7231724bea3f5a8d56889becd0e0
         })
         .then(res => {
           console.log(res.data);
@@ -244,6 +309,7 @@ export default {
         });
     },
     clear() {
+<<<<<<< HEAD
       (this.selected = ""),
         (this.input = {
           appName: "",
@@ -252,6 +318,15 @@ export default {
           version: "",
           tags: []
         });
+=======
+      this.input = {
+        appName: "",
+        summary: "",
+        introduction: "",
+        version: "",
+        tags: []
+      };
+>>>>>>> d78528a0595b7231724bea3f5a8d56889becd0e0
     },
     loadPageData: function() {
       // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
@@ -259,9 +334,12 @@ export default {
         .get("http://127.0.0.1:8000/api/develop/categories")
         .then((this.isLoading = false));
     }
+<<<<<<< HEAD
     // fileChange:function(e){
     //   this.file = e.target.files[0];
     // }
+=======
+>>>>>>> d78528a0595b7231724bea3f5a8d56889becd0e0
     // iconUp(e) {
     //   this.icon = e.target.file;
     //   console.log(this.icon);
