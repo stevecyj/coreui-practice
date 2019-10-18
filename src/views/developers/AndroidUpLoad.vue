@@ -153,9 +153,9 @@
               <b-button type="submit" size="sm" variant="primary" v-on:click="click">
                 <i class="fa fa-dot-circle-o"></i> Submit
               </b-button>
-              <b-button type="reset" size="sm" variant="danger" v-on:click="clear">
+              <!-- <b-button type="reset" size="sm" variant="danger" v-on:click="clear">
                 <i class="fa fa-ban"></i> Reset
-              </b-button>
+              </b-button>-->
             </div>
           </b-form>
         </b-card>
@@ -207,7 +207,7 @@ export default {
       this.img1 = this.$refs.img1.files[0];
       this.img2 = this.$refs.img2.files[0];
       // console.log(this.selected);
-      formData.append("memberId",2);
+      formData.append("memberId", 2);
       formData.append("categoryId", this.selected);
       formData.append("appName", this.appName);
       formData.append("summary", this.summary);
@@ -231,13 +231,6 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    },
-    clear() {
-      // this.selected = "",
-      // this.appName="",
-      // this.summary= "",
-      // this.introduction= "",
-      // this.version="",
     },
     loadPageData: function() {
       // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
