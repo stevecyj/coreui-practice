@@ -98,7 +98,7 @@ const ManageMembers = () => import("@/views/managers/ManageMembers");
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "hash", // https://router.vuejs.org/api/#mode
   linkActiveClass: "open active",
   scrollBehavior: () => ({ y: 0 }),
@@ -130,7 +130,7 @@ export default new Router({
         },
         {
           path: "/managers/managemembers",
-          meta: { label: "管理會員" },
+          meta: { label: "管理會員", requiresAuth: true },
           name: "ManageMembers",
           component: ManageMembers
         },
@@ -585,3 +585,17 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (sessionStorage.getItem("userData")) {
+      next({});
+    } else {
+      next({ path: "/pages/login" });
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

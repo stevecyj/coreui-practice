@@ -72,7 +72,9 @@ export default {
       user: {
         email: "",
         password: ""
-      }
+      },
+      isLogin: false,
+      isMember: ""
     };
   },
   methods: {
@@ -81,13 +83,14 @@ export default {
       const vm = this;
       this.axios
         .post("http://127.0.0.1:8000/api/login", vm.user)
-        .then(response => {
-          console.log(response.data);
+        .then(function(response) {
+          // console.log(response.data);
+          if (response.data) {
+            var userData = response.data;
+            console.log(userData);
+            sessionStorage.setItem("userData", JSON.stringify(userData));
+          }
         });
-
-      // this.$http.post(api, vm.user).then(response => {
-      //   console.log(response.data);
-      // });
     }
   }
 };
