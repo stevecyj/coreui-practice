@@ -6,7 +6,7 @@
           <div slot="header">
             <strong>Android</strong> 上傳
           </div>
-          <b-form >
+          <b-form>
             <b-form-group description label="輸入 App 名稱：" label-for="appName" label-cols-lg="3">
               <b-form-input
                 id="appName"
@@ -14,7 +14,7 @@
                 placeholder="請輸入 App 名稱"
                 pattern=".{1,50}"
                 required
-                v-model.lazy="input.appName"
+                v-model.lazy="appName"
               ></b-form-input>
             </b-form-group>
             <hr />
@@ -29,7 +29,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
-                v-model.lazy="input.tags[0]"
+                v-model.lazy="tags[0]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -43,7 +43,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
-                v-model.lazy="input.tags[1]"
+                v-model.lazy="tags[1]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -57,7 +57,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
-                v-model.lazy="input.tags[2]"
+                v-model.lazy="tags[2]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -71,7 +71,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
-                v-model.lazy="input.tags[3]"
+                v-model.lazy="tags[3]"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -85,7 +85,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
-                v-model.lazy="input.tags[4]"
+                v-model.lazy="tags[4]"
               ></b-form-input>
             </b-form-group>
             <hr />
@@ -102,7 +102,7 @@
                 placeholder="請輸入簡介(50字以內)"
                 pattern=".{1,50}"
                 required
-                v-model.lazy="input.summary"
+                v-model.lazy="summary"
               ></b-form-textarea>
             </b-form-group>
             <hr />
@@ -112,7 +112,7 @@
                 placeholder="X.X.X"
                 pattern="^[0-1]\.[0-9]*\.[0-9]$"
                 required
-                v-model.lazy="input.version"
+                v-model.lazy="version"
               ></b-form-input>
             </b-form-group>
             <hr />
@@ -123,7 +123,7 @@
                 placeholder="請輸入詳細說明(200字以內)"
                 pattern=".{1,200}"
                 required
-                v-model.lazy="input.introduction"
+                v-model.lazy="introduction"
               ></b-form-textarea>
             </b-form-group>
 
@@ -135,15 +135,18 @@
             <hr />
 
             <b-form-group label="上傳 ICON" label-for="fileInputIcon" :label-cols="3">
-              <b-form-file id="fileInputIcon" plain v-model="icon" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
+              <!-- <b-form-file id="fileInputIcon" plain v-model="icon" accept=".jpg, .png, .gif, .jpeg"></!-->
+              <input type="file" id="icon" ref="icon" />
             </b-form-group>
             <hr />
             <b-form-group label="上傳 截圖1" label-for="screenShot1" :label-cols="3">
-              <b-form-file id="screenShot1" plain v-model="img1" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
+              <!-- <b-form-file id="screenShot1" plain v-model="img1" accept=".jpg, .png, .gif, .jpeg"></b-form-file> -->
+              <input type="file" id="img1" ref="img1" />
             </b-form-group>
 
             <b-form-group label="上傳 截圖2" label-for="screenShot2" :label-cols="3">
-              <b-form-file id="screenShot2" plain v-model="img2" accept=".jpg, .png, .gif, .jpeg"></b-form-file>
+              <!-- <b-form-file id="screenShot2" plain v-model="img2" accept=".jpg, .png, .gif, .jpeg"></b-form-file> -->
+              <input type="file" id="img2" ref="img2" />
             </b-form-group>
             <hr />
             <div slot="footer">
@@ -169,17 +172,11 @@ export default {
       options: [],
       selected: null,
       show: true,
-      file: null,
-      icon: null,
-      img1: null,
-      img2: null,
-      input: {
-        appName: "",
-        summary: "",
-        introduction: "",
-        version: "",
-        tags: []
-      }
+      appName: "",
+      summary: "",
+      introduction: "",
+      version: "",
+      tags: []
     };
   },
   mounted() {
@@ -187,7 +184,6 @@ export default {
     // 初始化页面数据
     // me.loadPageData();
     this.isLoading = true;
-
     this.axios
       .get("http://127.0.0.1:8000/api/develop/categories")
       .then(response => {
@@ -202,33 +198,26 @@ export default {
         console.log("There was an error:", error.response);
       });
   },
-  // created() {
-  // const _this = this;
-  // this.axios
-  //   .get("http://127.0.0.1 :8000/api/develop/categories")
-  //   .then(response => {
-  //     this.options = response.data;
-  //     console.log(this.options[0]);
-  //     // this.options.value = response.data[0].id;
-  //     // this.options.text = response.data[0].category;
-  //     // console.log(this.options.text);
-  //     // console.log(this.options.value);
-  //     this.isLoading = false;
-  //   })
-  //   .catch(error => {
-  //     console.log("There was an error:", error.response);
-  //   });
-  // },
   methods: {
     click() {
+      // console.log(this.tags);
       let formData = new FormData();
       this.file = this.$refs.file.files[0];
-      console.log(this.file);
-      formData.append("input", this.input);
+      this.icon = this.$refs.icon.files[0];
+      this.img1 = this.$refs.img1.files[0];
+      this.img2 = this.$refs.img2.files[0];
+      // console.log(this.selected);
+      formData.append("memberId",2);
+      formData.append("categoryId", this.selected);
+      formData.append("appName", this.appName);
+      formData.append("summary", this.summary);
+      formData.append("introduction", this.introduction);
+      formData.append("version", this.version);
+      formData.append("tags", this.tags);
       formData.append("file", this.file);
-      // formData.append("icon", this.icon);
-      // formData.append("img1", this.img1);
-      // formData.append("img2", this.img2);
+      formData.append("icon", this.icon);
+      formData.append("img1", this.img1);
+      formData.append("img2", this.img2);
       const config = {
         header: { "Content-Type": "multipart/form-data" }
       };
@@ -244,14 +233,11 @@ export default {
         });
     },
     clear() {
-      (this.selected = ""),
-        (this.input = {
-          appName: "",
-          summary: "",
-          introduction: "",
-          version: "",
-          tags: []
-        });
+      // this.selected = "",
+      // this.appName="",
+      // this.summary= "",
+      // this.introduction= "",
+      // this.version="",
     },
     loadPageData: function() {
       // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
@@ -259,13 +245,6 @@ export default {
         .get("http://127.0.0.1:8000/api/develop/categories")
         .then((this.isLoading = false));
     }
-    // fileChange:function(e){
-    //   this.file = e.target.files[0];
-    // }
-    // iconUp(e) {
-    //   this.icon = e.target.file;
-    //   console.log(this.icon);
-    // }
   }
 };
 </script>
