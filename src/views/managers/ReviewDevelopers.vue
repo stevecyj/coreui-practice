@@ -1,267 +1,196 @@
 <template>
   <div class="animated fadeIn">
-    <b-card no-body>
-      <b-card-header>
-        <i class="icon-note"></i> Form Validation
-        <a class="badge badge-danger" href="https://coreui.io/pro/vue/">CoreUI Pro</a>
-        <div class="card-header-actions">
-          <a class="card-header-action" href="https://github.com/monterail/vuelidate" target="_blank" rel="noreferrer noopener">
-            <small class="text-muted">docs</small>
-          </a>
-        </div>
-      </b-card-header>
-      <b-card-body>
-        <b-link href="https://monterail.github.io/vuelidate" target="_blank" rel="noreferrer noopener">Vuelidate</b-link> provides <cite>Simple, lightweight model-based validation for Vue.js</cite>
-        <hr>
-        <b-row>
-          <b-col lg="6">
-            <!--<h6>Simple Form</h6>-->
-            <b-form v-on:submit.prevent="onSubmit" v-on:reset.prevent="onReset" novalidate>
-              <b-form-group id="firstNameInputGroup1"
-                            label="First Name"
-                            label-for="firstname">
-                <b-form-input id="firstName"
-                              type="text"
-                              v-model.lazy.trim="$v.form.firstName.$model"
-                              :state="chkState('firstName')"
-                              aria-describedby="input1LiveFeedback1"
-                              placeholder="First Name"
-                              autocomplete='given-name'
-                              autofocus />
-                <b-form-invalid-feedback id="input1LiveFeedback1">
-                  This is a required field and must be at least 2 characters
-                </b-form-invalid-feedback>
-              </b-form-group>
-              <b-form-group id="lastNameInputGroup2"
-                            label="Last Name"
-                            label-for="lastName">
-                <b-form-input id="lastName"
-                              type="text"
-                              v-model.lazy.trim="$v.form.lastName.$model"
-                              :state="chkState('lastName')"
-                              aria-describedby="input1LiveFeedback2"
-                              placeholder="Last Name"
-                              autocomplete='family-name'/>
-                <b-form-invalid-feedback id="input1LiveFeedback2">
-                  This is a required field and must be at least 1 character
-                </b-form-invalid-feedback>
-              </b-form-group>
-              <b-form-group id="userNameInputGroup3"
-                            label="User Name"
-                            label-for="userName">
-                <b-form-input id="userName"
-                              type="text"
-                              v-model.trim="$v.form.userName.$model"
-                              :state="chkState('userName')"
-                              aria-describedby="input1LiveFeedback3"
-                              placeholder="User Name"
-                              autocomplete='username' />
-                <b-form-invalid-feedback id="input1LiveFeedback3">
-                  This is a required field and must be at least 5 characters
-                </b-form-invalid-feedback>
-              </b-form-group>
-              <b-form-group id="emailInputGroup4"
-                            label="Email"
-                            label-for="email">
-                <b-form-input id="email"
-                              type="email"
-                              v-model.trim="$v.form.email.$model"
-                              :state="chkState('email')"
-                              aria-describedby="input1LiveFeedback4"
-                              placeholder="Email"
-                              autocomplete='email' />
-                <b-form-invalid-feedback id="input1LiveFeedback4">
-                  This is a required field and must be valid e-mail address
-                </b-form-invalid-feedback>
-              </b-form-group>
-              <b-row>
-                <b-col md="6">
-                  <b-form-group id="passInputGroup5"
-                                label="Password"
-                                label-for="password">
-                    <b-form-input id="password"
-                                  type="password"
-                                  v-model.trim="$v.form.password.$model"
-                                  :state="chkState('password')"
-                                  aria-describedby="input1LiveFeedback5"
-                                  placeholder="Password"
-                                  autocomplete='new-password' />
-                    <b-form-invalid-feedback id="input1LiveFeedback5">
-                      Required password containing at least: number, uppercase and lowercase letter, 8 characters
-                    </b-form-invalid-feedback>
-                  </b-form-group>
+    <div>
+      <nav class="navbar">
+        <a class="navbar-brand">
+          <h4>
+            <b>待審核開發人員</b>
+          </h4>
+        </a>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="申請會員"
+            aria-label="Search"
+            v-model="keyword"
+          />
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button> -->
+        </form>
+      </nav>
+    </div>
 
-                </b-col>
-                <b-col md="6">
-                  <b-form-group id="confPassInputGroup6"
-                                label="Confirm password"
-                                label-for="confirm_password">
-                    <b-form-input id="confirm_password"
-                                  type="password"
-                                  v-model.trim="$v.form.confirmPassword.$model"
-                                  :state="chkState('confirmPassword')"
-                                  aria-describedby="input1LiveFeedback6"
-                                  placeholder="Confirm password"
-                                  autocomplete='new-password' />
-                    <b-form-invalid-feedback id="input1LiveFeedback6">
-                      Passwords must match
-                    </b-form-invalid-feedback>
-                  </b-form-group>
-
-                </b-col>
-              </b-row>
-              <b-form-group :invalid-feedback="invCheck" :state="chkState('accept')">
-                <b-form-checkbox id="accept"
-                                 v-model="$v.form.accept.$model"
-                                 :state="chkState('accept')"
-                                 aria-describedby="input1LiveFeedback7">
-                  <strong>I accept the terms of use</strong>
-                </b-form-checkbox>
-              </b-form-group>
-              <b-button type="submit" variant="primary" :disabled="$v.form.$invalid || submitted">
-                Submit
-              </b-button>
-              <b-button class="ml-1" type="submit" variant="success" :disabled="!$v.form.$invalid">
-                Validate
-              </b-button>
-              <b-button class="ml-1" type="reset" variant="danger" :disabled="!isDirty">Reset</b-button>
-            </b-form>
-            <br/>
-          </b-col>
-          <b-col lg="6">
-            <b-card :bg-variant="feedBack">
-              <pre>{{formStr}}</pre>
-            </b-card>
-          </b-col>
-        </b-row>
-      </b-card-body>
+    <b-card no-body class="card-default" style="text-align: center">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" width="10%">No.</th>
+            <th scope="col">申請會員</th>
+            <th scope="col">申請日期</th>
+            <th scope="col">是否同意</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(event,index) in search(keyword)" :key="event.id">
+            <td>{{index+1}}</td>
+            <td>{{event.name}}</td>
+            <td>{{event.updated_at}}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" @click="CheckOK(event.id)">是</button>&nbsp;&nbsp;&nbsp;
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                @click="goBack(event.id)"
+              >否</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </b-card>
   </div>
 </template>
-
 <script>
-import { validationMixin } from "vuelidate"
-import { required, minLength, email, sameAs, helpers } from "vuelidate/lib/validators"
-
-const mustAccept = value => {
-  return Boolean(value)
-}
-const strongPass = helpers.regex('strongPass', /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)
-
-
-const formShape = {
-  firstName: "",
-  lastName: "",
-  userName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  accept: false
-}
+import EventService from "@/service/EventService.js";
 
 export default {
-  name: "ValidationForms",
   data() {
     return {
-      form: Object.assign({}, formShape),
-      feedBack: 'secondary',
-      submitted: false
-    }
+      keyword: "",
+      events: []
+    };
   },
-  computed: {
-    formStr() { return JSON.stringify(this.form, null, 4) },
-    isValid() { return !this.$v.form.$anyError },
-    isDirty() { return this.$v.form.$anyDirty },
-    invCheck() { return 'You must accept before submitting' },
-  },
-  mixins: [validationMixin],
-  validations: {
-    form: {
-      firstName: {
-        required,
-        minLength: minLength(2)
-      },
-      lastName: {
-        required,
-        minLength: minLength(1)
-      },
-      userName: {
-        required,
-        minLength: minLength(5)
-      },
-      email: {
-        required,
-        email
-      },
-      password: {
-        required,
-        minLength: minLength(8),
-        strongPass
-      },
-      confirmPassword: {
-        required,
-        sameAsPassword: sameAs("password")
-      },
-      accept: {
-        required,
-        mustAccept
-      }
-    }
+  created() {
+    EventService.checkDev()
+      .then(response => {
+        this.events = response.data;
+        // console.log("data---", response.data);
+      })
+      .catch(error => {
+        console.log("There was an error:", error.response);
+      });
   },
   methods: {
-    onSubmit() {
-      if (this.validate()) {
-        this.$nextTick(() => {
-          // submit
-          // console.log('submit:', this.formStr)
-          this.submitted = true
-          this.feedBack = 'info'
+    search(keyword) {
+      var newList = [];
+      this.events.forEach(event => {
+        if (event.name.indexOf(keyword) != -1) {
+          newList.push(event);
+        }
+      });
+      return newList;
+    },
+    CheckOK(id) {
+      this.axios
+        .put("http://127.0.0.1:8000/api/Admin/devCheckOk/" + id)
+        .then(res => {
+          this.events = res.data;
         })
-      }
-    },
-    onReset() {
-      // Reset validation
-      this.form = Object.assign({}, formShape)
-      this.submitted = false
-      this.$nextTick(() => {
-        this.$v.$reset()
-        this.feedBack = 'secondary'
-      })
-    },
-    chkState(val) {
-      const field = this.$v.form[val]
-      return !field.$dirty || !field.$invalid
-    },
-    findFirstError(component = this) {
-      if (component.state === false) {
-        if (component.$refs.input) {
-          component.$refs.input.focus()
-          return true
-        }
-        if (component.$refs.check) {
-          component.$refs.check.focus()
-          return true
-        }
-      }
-      let focused = false
-      component.$children.some((child) => {
-        focused = this.findFirstError(child)
-        return focused
-      })
+        .catch(error => {
+          console.log(error.res);
+        });
 
-      return focused
+      window.alert = function(msg) {
+        var div = document.createElement("div");
+        div.innerHTML =
+          '<style type="text/css">' +
+          ".nbaMask { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); } " +
+          ".nbaMaskTransparent { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; } " +
+          ".nbaDialog { position: fixed; z-index: 5000; width: 80%; max-width: 300px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #fff; text-align: center; border-radius: 8px; overflow: hidden; opacity: 1; color: white; }" +
+          ".nbaDialog .nbaDialogHd { padding: .2rem .27rem .08rem .27rem; } " +
+          ".nbaDialog .nbaDialogHd .nbaDialogTitle { font-size: 17px; font-weight: 400; } " +
+          ".nbaDialog .nbaDialogBd { padding: 0 .27rem; font-size: 17px; line-height: 48px; word-wrap: break-word; word-break: break-all; color: #000000; } " +
+          ".nbaDialog .nbaDialogFt { position: relative; line-height: 48px; font-size: 17px; display: -webkit-box; display: -webkit-flex; display: flex; } " +
+          '.nbaDialog .nbaDialogFt:after { content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; border-top: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); } ' +
+          ".nbaDialog .nbaDialogBtn { display: block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; color: #09BB07; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; margin-bottom: 0; } " +
+          '.nbaDialog .nbaDialogBtn:after { content: " "; position: absolute; left: 0; top: 0; width: 1px; bottom: 0; border-left: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); } ' +
+          ".nbaDialog a { text-decoration: none; -webkit-tap-highlight-color: transparent; }" +
+          "</style>" +
+          '<div id="dialogs2" style="display: none">' +
+          '<div class="nbaMask"></div>' +
+          '<div class="nbaDialog">' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogBd" id="dialog_msg2">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogFt">' +
+          ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">确定</a>' +
+          " </div></div></div>";
+        document.body.appendChild(div);
+
+        var dialogs2 = document.getElementById("dialogs2");
+        dialogs2.style.display = "block";
+
+        var dialog_msg2 = document.getElementById("dialog_msg2");
+        dialog_msg2.innerHTML = msg;
+
+        var dialog_ok2 = document.getElementById("dialog_ok2");
+        dialog_ok2.onclick = function() {
+          dialogs2.style.display = "none";
+          // callback();
+        };
+      };
+
+      alert("成為開發者");
     },
-    validate() {
-      this.$v.$touch()
-      this.$nextTick(() => this.findFirstError())
-      return this.isValid
+    goBack(id) {
+      this.axios
+        .put("http://127.0.0.1:8000/api/Admin/devGoBack/" + id)
+        .then(res => {
+          this.events = res.data;
+        })
+        .catch(error => {
+          console.log(error.res);
+        });
+
+      window.alert = function(msg) {
+        var div = document.createElement("div");
+        div.innerHTML =
+          '<style type="text/css">' +
+          ".nbaMask { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); } " +
+          ".nbaMaskTransparent { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; } " +
+          ".nbaDialog { position: fixed; z-index: 5000; width: 80%; max-width: 300px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #fff; text-align: center; border-radius: 8px; overflow: hidden; opacity: 1; color: white; }" +
+          ".nbaDialog .nbaDialogHd { padding: .2rem .27rem .08rem .27rem; } " +
+          ".nbaDialog .nbaDialogHd .nbaDialogTitle { font-size: 17px; font-weight: 400; } " +
+          ".nbaDialog .nbaDialogBd { padding: 0 .27rem; font-size: 17px; line-height: 48px; word-wrap: break-word; word-break: break-all; color: #000000; } " +
+          ".nbaDialog .nbaDialogFt { position: relative; line-height: 48px; font-size: 17px; display: -webkit-box; display: -webkit-flex; display: flex; } " +
+          '.nbaDialog .nbaDialogFt:after { content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; border-top: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); } ' +
+          ".nbaDialog .nbaDialogBtn { display: block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; color: #09BB07; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; margin-bottom: 0; } " +
+          '.nbaDialog .nbaDialogBtn:after { content: " "; position: absolute; left: 0; top: 0; width: 1px; bottom: 0; border-left: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); } ' +
+          ".nbaDialog a { text-decoration: none; -webkit-tap-highlight-color: transparent; }" +
+          "</style>" +
+          '<div id="dialogs2" style="display: none">' +
+          '<div class="nbaMask"></div>' +
+          '<div class="nbaDialog">' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogBd" id="dialog_msg2">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogFt">' +
+          ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">确定</a>' +
+          " </div></div></div>";
+        document.body.appendChild(div);
+
+        var dialogs2 = document.getElementById("dialogs2");
+        dialogs2.style.display = "block";
+
+        var dialog_msg2 = document.getElementById("dialog_msg2");
+        dialog_msg2.innerHTML = msg;
+
+        var dialog_ok2 = document.getElementById("dialog_ok2");
+        dialog_ok2.onclick = function() {
+          dialogs2.style.display = "none";
+          // callback();
+        };
+      };
+
+      alert("申請退回");
     }
   }
-}
+};
 </script>
-
-<style scoped>
-.btn.disabled {
-  cursor: auto;
-}
-</style>

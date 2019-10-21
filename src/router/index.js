@@ -96,6 +96,10 @@ const ReviewDevelopers = () => import("@/views/managers/ReviewDevelopers");
 const ManageApps = () => import("@/views/managers/ManageApps");
 const ManageMembers = () => import("@/views/managers/ManageMembers");
 const Welcome = () => import("@/views/managers/Welcome");
+const ManageHome = () => import("@/views/managers/ManageHome");
+const ManageAlter = () => import("@/views/managers/ManageAlter");
+const NewDevelopers = () => import("@/views/managers/NewDevelopers");
+const ManageClass = () => import("@/views/managers/ManageClass");
 
 Vue.use(Router);
 
@@ -106,7 +110,8 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "/pages/login",
+      // redirect: "/pages/login",
+      redirect: "/managers/managehome",
       meta: { label: "後台管理" },
       name: "Developers",
       component: DefaultContainer,
@@ -117,6 +122,13 @@ const router = new Router({
           name: "Welcome",
           component: Welcome
         },
+
+        {
+          path: "/managers/managehome",
+          meta: { label: "管理首頁" },
+          name: "ManageHome",
+          component: ManageHome
+        },
         {
           path: "/managers/reviewapps",
           meta: { label: "審核 Apps", requiresAuth: true },
@@ -125,7 +137,7 @@ const router = new Router({
         },
         {
           path: "/managers/reviewdevelopers",
-          meta: { label: "審核開發者" },
+          meta: { label: "審核開發人員" },
           name: "ReviewDevelopers",
           component: ReviewDevelopers
         },
@@ -140,6 +152,24 @@ const router = new Router({
           meta: { label: "管理會員" },
           name: "ManageMembers",
           component: ManageMembers
+        },
+        {
+          path: "/managers/manageclass",
+          meta: { label: "管理類別" },
+          name: "ManageClass",
+          component: ManageClass
+        },
+        {
+          path: "/managers/newdevelopers",
+          meta: { label: "新增開發人員" },
+          name: "NewDevelopers",
+          component: NewDevelopers
+        },
+        {
+          path: "/managers/managealter",
+          meta: { label: "個人資料修改" },
+          name: "ManageAlter",
+          component: ManageAlter
         },
 
         {
