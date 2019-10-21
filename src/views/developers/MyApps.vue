@@ -72,12 +72,12 @@ export default {
     this.isLoading = true;
   },
   methods: {
-    loadPageData: function() {
-      // axios 請求頁面資料 .then 中修改狀態值  this.isLoading = false
-      this.axios
-        .get("http://127.0.0.1:8000/api/develop/appRank/2")
-        .then((this.isLoading = false));
-    }
+    // loadPageData: function() {
+    //   // axios 請求頁面資料 .then 中修改狀態值  this.isLoading = false
+    //   this.axios
+    //     .get("http://127.0.0.1:8000/api/develop/appRank/2")
+    //     .then((this.isLoading = false));
+    // }
   }
 };
 </script>

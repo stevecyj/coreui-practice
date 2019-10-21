@@ -81,14 +81,19 @@ export default {
     login() {
       // const api = "http://127.0.0.1:8000/api/login";
       const vm = this;
+
       this.axios
-        .post("http://127.0.0.1:8000/api/login", vm.user)
+        .post("http://127.0.0.1:8000/api/login", this.user)
         .then(function(response) {
-          // console.log(response.data);
-          if (response.data) {
-            var userData = response.data;
+          console.log(response.data);
+          var userData = response.data;
+          sessionStorage.setItem("userId", userData.id);
+          sessionStorage.setItem("userName", userData.name);
+          sessionStorage.setItem("userLevel", userData.level);
+          sessionStorage.setItem("isSuccess", userData.isSuccess);
+          if (userData.level == 1) {
             console.log(userData);
-            sessionStorage.setItem("userData", JSON.stringify(userData));
+            vm.$router.push("/managers/welcome");
           }
         });
     }
