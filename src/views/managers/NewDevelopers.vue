@@ -189,15 +189,24 @@ export default {
             password: this.password
           })
           .then(res => {
+            if (res.data.isSuccess === "True") alert("新增開發人員成功");
             console.log(res.data);
             this.name = "";
             this.phone = "";
             this.email = "";
             this.idNumber = "";
             this.password = "";
+            // alert("新增開發人員成功");
           })
           .catch(error => {
-            console.log(error);
+            if (error.response.data.errors.idNumber != undefined) {
+              alert("該身份證字號已被使用!");
+            } else if (error.response.data.errors.phone != undefined) {
+              alert("該手機號碼已被使用!");
+            } else if (error.response.data.errors.email != undefined) {
+              alert("該E-mail已被使用!");
+            }
+            // console.log(error);
           });
 
         window.alert = function(msg) {
@@ -243,7 +252,7 @@ export default {
           };
         };
 
-        alert("新增開發者成功");
+        // alert("新增開發者成功");
       }
     }
   }
