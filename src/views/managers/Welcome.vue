@@ -84,8 +84,8 @@
 </template>
 
 <script>
-export default {
-  name: 'jumbotrons'
-}
+// export default {
+//   name: 'jumbotrons'
+// }
 </script>
 
