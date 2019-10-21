@@ -1,262 +1,206 @@
 <template>
-  <div class="wrapper">
-    <div class="animated fadeIn">
-      <!-- <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>Bootstrap list group</strong>
-              <div class="card-header-actions">
-                <a
-                  href="https://bootstrap-vue.js.org/docs/components/list-group"
-                  class="card-header-action"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  <small class="text-muted">docs</small>
-                </a>
-              </div>
-            </div>
-            <b-list-group>
-              <b-list-group-item>Cras justo odio</b-list-group-item>
-              <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>active items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item>Cras justo odio</b-list-group-item>
-              <b-list-group-item active>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>disabled items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item disabled>Cras justo odio</b-list-group-item>
-              <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-              <b-list-group-item>Morbi leo risus</b-list-group-item>
-              <b-list-group-item disabled>Porta ac consectetur ac</b-list-group-item>
-              <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>actionable items</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item href="#some-link">Awesome link</b-list-group-item>
-              <b-list-group-item href="#" active>Link with active state</b-list-group-item>
-              <b-list-group-item href="#">Action links are easy</b-list-group-item>
-              <b-list-group-item href="#foobar" disabled>Disabled link</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>buttons</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item button>Button item</b-list-group-item>
-              <b-list-group-item button>I am a button</b-list-group-item>
-              <b-list-group-item button disabled>Disabled button</b-list-group-item>
-              <b-list-group-item button>This is a button too</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>with badges</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Cras justo odio
-                <b-badge variant="primary" pill>14</b-badge>
-              </b-list-group-item>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <b-badge variant="primary" pill>2</b-badge>
-              </b-list-group-item>
-              <b-list-group-item class="d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <b-badge variant="primary" pill>1</b-badge>
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>variants</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item>This is a default list group item</b-list-group-item>
-              <b-list-group-item variant="primary">This is a primary list group item</b-list-group-item>
-              <b-list-group-item variant="secondary">This is a secondary list group item</b-list-group-item>
-              <b-list-group-item variant="success">This is a success list group item</b-list-group-item>
-              <b-list-group-item variant="danger">This is a danger list group item</b-list-group-item>
-              <b-list-group-item variant="warning">This is a warning list group item</b-list-group-item>
-              <b-list-group-item variant="info">This is a info list group item</b-list-group-item>
-              <b-list-group-item variant="light">This is a light list group item</b-list-group-item>
-              <b-list-group-item variant="dark">This is a dark list group item</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-        <b-col md="6">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>variants active</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item href="#">This is a default list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="primary">This is a primary list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="secondary">This is a secondary list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="success">This is a success list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="danger">This is a danger list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="warning">This is a warning list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="info">This is a info list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="light">This is a light list group item</b-list-group-item>
-              <b-list-group-item href="#" variant="dark">This is a dark list group item</b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col cols="12">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>inside cards</small>
-            </div>
-            <b-card-group deck>
-              <b-card>
-                <div slot="header">
-                  <b>Card with list group</b>
-                </div>
-                <b-list-group>
-                  <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-                  <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-                  <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-                </b-list-group>
-                <p class="card-text mt-2">
-                  Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex
-                  nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua
-                  consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris
-                  ad sit ipsum anim Lorem.
-                </p>
-              </b-card>
-              <b-card no-body>
-                <div slot="header">
-                  <b>Card with flush list group</b>
-                </div>
-                <b-list-group flush>
-                  <b-list-group-item href="#">Cras justo odio</b-list-group-item>
-                  <b-list-group-item href="#">Dapibus ac facilisis in</b-list-group-item>
-                  <b-list-group-item href="#">Vestibulum at eros</b-list-group-item>
-                </b-list-group>
-                <b-card-body>
-                  Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex
-                  nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua
-                  consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris
-                  ad sit ipsum anim Lorem.
-                </b-card-body>
-              </b-card>
-            </b-card-group>
-          </b-card>
-        </b-col>
-      </b-row>-->
-      <b-row>
-        <b-col md="12">
-          <b-card header-tag="header" footer-tag="footer">
-            <div slot="header">
-              <i class="fa fa-align-justify"></i>
-              <strong>List group</strong>
-              <small>custom content</small>
-            </div>
-            <b-list-group>
-              <b-list-group-item href="#" active class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small>Donec id elit non mi porta.</small>
-              </b-list-group-item>
-              <b-list-group-item href="#" class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </b-list-group-item>
-              <b-list-group-item href="#" disabled class="flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Disabled List group item</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">
-                  Donec id elit non mi porta gravida at eget metus. Maecenas
-                  sed diam eget risus varius blandit.
-                </p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </b-list-group-item>
-            </b-list-group>
-          </b-card>
-        </b-col>
-      </b-row>
+  <div class="animated fadeIn">
+    <div>
+      <nav class="navbar">
+        <a class="navbar-brand">
+          <h4>
+            <b>APP管理</b>
+          </h4>
+        </a>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="APP名稱"
+            aria-label="Search"
+            v-model="keyword"
+          />
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button> -->
+        </form>
+      </nav>
     </div>
+
+    <b-card no-body class="card-default" style="text-align: center">
+      <table class="table" style="table-layout: fixed;">
+        <thead>
+          <tr>
+            <th scope="col" width="10%">No.</th>
+            <th scope="col">APP名稱</th>
+            <th scope="col" width="55%">簡介</th>
+            <th scope="col">系統</th>
+            <th scope="col">停用</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
+            <td>{{index+1}}</td>
+            <td>{{event.appName}}</td>
+            <td>{{event.summary}}</td>
+            <td>{{event.device}}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                @click="stopApp(event.id)"
+                v-if="event.permission===1"
+              >停用</button>
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                @click="restoreApp(event.id)"
+                v-if="event.permission===0"
+              >恢復</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </b-card>
   </div>
 </template>
 
 <script>
+// import axios from "axios";
+import EventService from "@/service/EventService.js";
+
 export default {
-  name: "list-groups"
+  data() {
+    return {
+      keyword: "",
+      events: []
+    };
+  },
+  created() {
+    EventService.appManage()
+      .then(response => {
+        this.events = response.data;
+      })
+      .catch(error => {
+        console.log("There was an error:", error.response);
+      });
+  },
+  methods: {
+    search(keyword) {
+      var newList = [];
+      this.events.forEach(event => {
+        if (event.appName.indexOf(keyword) != -1) {
+          newList.push(event);
+        }
+      });
+      return newList;
+    },
+    stopApp(id) {
+      this.axios
+        .put("http://127.0.0.1:8000/api/Admin/stopApp/" + id)
+        .then(res => {
+          this.events = res.data;
+        })
+        .catch(error => {
+          console.log(error.res);
+        });
+
+      window.alert = function(msg) {
+        var div = document.createElement("div");
+        div.innerHTML =
+          '<style type="text/css">' +
+          ".nbaMask { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); } " +
+          ".nbaMaskTransparent { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; } " +
+          ".nbaDialog { position: fixed; z-index: 5000; width: 80%; max-width: 300px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #fff; text-align: center; border-radius: 8px; overflow: hidden; opacity: 1; color: white; }" +
+          ".nbaDialog .nbaDialogHd { padding: .2rem .27rem .08rem .27rem; } " +
+          ".nbaDialog .nbaDialogHd .nbaDialogTitle { font-size: 17px; font-weight: 400; } " +
+          ".nbaDialog .nbaDialogBd { padding: 0 .27rem; font-size: 17px; line-height: 48px; word-wrap: break-word; word-break: break-all; color: #000000; } " +
+          ".nbaDialog .nbaDialogFt { position: relative; line-height: 48px; font-size: 17px; display: -webkit-box; display: -webkit-flex; display: flex; } " +
+          '.nbaDialog .nbaDialogFt:after { content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; border-top: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); } ' +
+          ".nbaDialog .nbaDialogBtn { display: block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; color: #09BB07; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; margin-bottom: 0; } " +
+          '.nbaDialog .nbaDialogBtn:after { content: " "; position: absolute; left: 0; top: 0; width: 1px; bottom: 0; border-left: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); } ' +
+          ".nbaDialog a { text-decoration: none; -webkit-tap-highlight-color: transparent; }" +
+          "</style>" +
+          '<div id="dialogs2" style="display: none">' +
+          '<div class="nbaMask"></div>' +
+          '<div class="nbaDialog">' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogBd" id="dialog_msg2">彈窗內容，告知當前狀態、信息和解决方法，描述文字盡量控制在三行内</div>' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogFt">' +
+          ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">確定</a>' +
+          " </div></div></div>";
+        document.body.appendChild(div);
+
+        var dialogs2 = document.getElementById("dialogs2");
+        dialogs2.style.display = "block";
+
+        var dialog_msg2 = document.getElementById("dialog_msg2");
+        dialog_msg2.innerHTML = msg;
+
+        var dialog_ok2 = document.getElementById("dialog_ok2");
+        dialog_ok2.onclick = function() {
+          dialogs2.style.display = "none";
+          // callback();
+        };
+      };
+
+      alert("停用APP成功");
+    },
+    restoreApp(id) {
+      this.axios
+        .put("http://127.0.0.1:8000/api/Admin/restoreApp/" + id)
+        .then(res => {
+          this.events = res.data;
+        })
+        .catch(error => {
+          console.log(error.res);
+        });
+
+      window.alert = function(msg) {
+        var div = document.createElement("div");
+        div.innerHTML =
+          '<style type="text/css">' +
+          ".nbaMask { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); } " +
+          ".nbaMaskTransparent { position: fixed; z-index: 1000; top: 0; right: 0; left: 0; bottom: 0; } " +
+          ".nbaDialog { position: fixed; z-index: 5000; width: 80%; max-width: 300px; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background-color: #fff; text-align: center; border-radius: 8px; overflow: hidden; opacity: 1; color: white; }" +
+          ".nbaDialog .nbaDialogHd { padding: .2rem .27rem .08rem .27rem; } " +
+          ".nbaDialog .nbaDialogHd .nbaDialogTitle { font-size: 17px; font-weight: 400; } " +
+          ".nbaDialog .nbaDialogBd { padding: 0 .27rem; font-size: 17px; line-height: 48px; word-wrap: break-word; word-break: break-all; color: #000000; } " +
+          ".nbaDialog .nbaDialogFt { position: relative; line-height: 48px; font-size: 17px; display: -webkit-box; display: -webkit-flex; display: flex; } " +
+          '.nbaDialog .nbaDialogFt:after { content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; border-top: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); } ' +
+          ".nbaDialog .nbaDialogBtn { display: block; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; color: #09BB07; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; margin-bottom: 0; } " +
+          '.nbaDialog .nbaDialogBtn:after { content: " "; position: absolute; left: 0; top: 0; width: 1px; bottom: 0; border-left: 1px solid #e6e6e6; color: #e6e6e6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); } ' +
+          ".nbaDialog a { text-decoration: none; -webkit-tap-highlight-color: transparent; }" +
+          "</style>" +
+          '<div id="dialogs2" style="display: none">' +
+          '<div class="nbaMask"></div>' +
+          '<div class="nbaDialog">' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogBd" id="dialog_msg2">彈窗內容，告知當前狀態、信息和解决方法，描述文字盡量控制在三行内</div>' +
+          ' <div class="nbaDialogHd">' +
+          ' <strong class="nbaDialogTitle"></strong>' +
+          " </div>" +
+          ' <div class="nbaDialogFt">' +
+          ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">確定</a>' +
+          " </div></div></div>";
+        document.body.appendChild(div);
+
+        var dialogs2 = document.getElementById("dialogs2");
+        dialogs2.style.display = "block";
+
+        var dialog_msg2 = document.getElementById("dialog_msg2");
+        dialog_msg2.innerHTML = msg;
+
+        var dialog_ok2 = document.getElementById("dialog_ok2");
+        dialog_ok2.onclick = function() {
+          dialogs2.style.display = "none";
+          // callback();
+        };
+      };
+
+      alert("啟用APP成功");
+    }
+  }
 };
 </script>
-

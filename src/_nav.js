@@ -19,25 +19,46 @@ export default {
       }
     },
     {
-      name: "審核 Apps",
-      url: "/managers/reviewapps",
-      icon: "icon-drop"
+      name: "管理首頁",
+      url: "/managers/managehome",
+      icon: "icon-star"
     },
     {
-      name: "審核開發者",
+      name: "審核 Apps",
+      url: "/managers/reviewapps",
+      icon: "icon-star"
+    },
+    {
+      name: "審核開發人員",
       url: "/managers/reviewdevelopers",
-      icon: "icon-pencil"
+      icon: "icon-star"
     },
     {
       name: "管理 Apps",
       url: "/managers/manageapps",
-      icon: "icon-drop"
+      icon: "icon-star"
     },
     {
       name: "管理會員",
       url: "/managers/managemembers",
-      icon: "icon-pencil"
+      icon: "icon-star"
     },
+    {
+      name: "管理類別",
+      url: "/managers/manageclass",
+      icon: "icon-star"
+    },
+    {
+      name: "新增開發人員",
+      url: "/managers/newdevelopers",
+      icon: "icon-star"
+    },
+    {
+      name: "個人資料修改",
+      url: "/managers/managealter",
+      icon: "icon-star"
+    },
+
     {
       title: true,
       name: "開發人員",
