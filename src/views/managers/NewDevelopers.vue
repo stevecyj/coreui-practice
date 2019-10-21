@@ -222,12 +222,12 @@ export default {
             ' <div class="nbaDialogHd">' +
             ' <strong class="nbaDialogTitle"></strong>' +
             " </div>" +
-            ' <div class="nbaDialogBd" id="dialog_msg2">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>' +
+            ' <div class="nbaDialogBd" id="dialog_msg2">彈窗內容，告知當前狀態、信息和解决方法，描述文字盡量控制在三行内</div>' +
             ' <div class="nbaDialogHd">' +
             ' <strong class="nbaDialogTitle"></strong>' +
             " </div>" +
             ' <div class="nbaDialogFt">' +
-            ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">确定</a>' +
+            ' <a href="javascript:;" class="nbaDialogBtn nbaDialogBtnPrimary" id="dialog_ok2">確定</a>' +
             " </div></div></div>";
           document.body.appendChild(div);
 
