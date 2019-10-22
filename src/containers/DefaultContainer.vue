@@ -78,6 +78,7 @@
 
 <script>
 import nav from "@/_nav";
+import navManage from "@/_navManage";
 import {
   Header as AppHeader,
   SidebarToggler,

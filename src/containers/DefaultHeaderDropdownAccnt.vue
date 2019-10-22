@@ -1,7 +1,7 @@
 <template>
   <AppHeaderDropdown right no-caret>
     <template slot="header">
-      <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com" />
+      <img v-bind:src="userIcon" class="img-avatar" alt="頭像" />
     </template>\
     <template slot="dropdown">
       <!-- <b-dropdown-header tag="div" class="text-center"><strong>Account</strong></b-dropdown-header>
@@ -38,8 +38,10 @@
       <!-- <b-dropdown-item>
         <i class="fa fa-shield" /> Lock Account
       </b-dropdown-item>-->
-      <b-dropdown-item>
-        <i class="fa fa-lock" /> Logout
+
+      <b-dropdown-item v-on:click="logout">
+        <i class="fa fa-lock" />
+        Logout
       </b-dropdown-item>
     </template>
   </AppHeaderDropdown>
@@ -53,7 +55,17 @@ export default {
     AppHeaderDropdown
   },
   data: () => {
-    return { itemsCount: 42 };
+    return {
+      userIcon: " http://localhost:8000" + sessionStorage.getItem("userIcon"),
+      itemsCount: 42
+    };
+  },
+  methods: {
+    logout() {
+      const vm = this;
+      sessionStorage.clear();
+      vm.$router.push("/pages/login");
+    }
   }
 };
 </script>
