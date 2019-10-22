@@ -174,7 +174,7 @@ export default {
       // if(this.name != 0 && phoneR.test(this.phone) && emailR.test(this.email) && idNumberR.test(this.idNumber) && passwordR.test(this.password)) {
       // if(this.name != 0 && phoneR.test(this.phone) && emailR.test(this.email) && idNumberR.test(this.idNumber) && passwordR.test(this.password) && 7 < this.password.length < 13) {
       if (
-        this.name != 0 &&
+        this.name != "" &&
         phoneR.test(this.phone) &&
         emailR.test(this.email) &&
         idNumberR.test(this.idNumber) &&
