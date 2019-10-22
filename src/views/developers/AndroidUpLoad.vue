@@ -228,6 +228,18 @@ export default {
         })
         .then(res => {
           console.log(res.data);
+          // this.options = [0],
+          this.selected = null,
+          this.show = true,
+          this.appName = "",
+          this.summary = "",
+          this.introduction = "",
+          this.version = "",
+          this.tags = [],
+          this.$refs.file.value = "",
+          this.$refs.icon.value = "",
+          this.$refs.img1.value = "",
+          this.$refs.img2.value = ""
         })
         .catch(error => {
           console.log(error);
