@@ -105,9 +105,9 @@ import EventService from "@/service/EventService.js";
 export default {
   data() {
     return {
-      userName:sessionStorage.getItem('userName'),
+      userId: sessionStorage.getItem("userId"),
+      userName: sessionStorage.getItem("userName"),
       input: {
-        name: "",
         oldPwd: "",
         newPwd: "",
         pwdCheck: ""
@@ -116,9 +116,9 @@ export default {
   },
   methods: {
     submitButton() {
-      let { name, oldPwdm, newPwd, pwdCheck } = this.input;
+      let { oldPwdm, newPwd, pwdCheck } = this.input;
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/1", this.input)
+        .put("http://127.0.0.1:8000/api/Admin/" + this.userId, this.input)
         .then(res => {
           console.log(res.data);
         })
