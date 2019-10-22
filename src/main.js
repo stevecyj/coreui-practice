@@ -28,3 +28,17 @@ window.a = new Vue({
     identity: 1
   }
 });
+
+// router.beforeEach((to, from, next) => {
+//   console.log("to", to, "from", from, "next", next);
+//   next();
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     if (sessionStorage.getItem("userName")) {
+//       next({});
+//     } else {
+//       next({ path: "/pages/login" });
+//     }
+//   } else {
+//     next();
+//   }
+// });

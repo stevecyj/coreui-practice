@@ -1,143 +1,42 @@
 <template>
   <div class="animated fadeIn">
-    <b-card no-body>
-      <b-card-header>
-        <i class="icon-note"></i> Form Validation
-        <div class="card-header-actions">
-          <a
-            class="card-header-action"
-            href="https://github.com/monterail/vuelidate"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <!-- <small class="text-muted">docs</small> -->
-          </a>
-        </div>
-      </b-card-header>
-      <b-card-body>
-        修改前請確認
-        <cite>輸入是否正確</cite>
-        <hr />
-        <b-row>
-          <b-col lg="6" offset="3">
-            <!--<h6>Simple Form</h6>-->
-            <b-form v-on:submit.prevent="onSubmit" v-on:reset.prevent="onReset" novalidate>
-              <!-- <b-form-group id="firstNameInputGroup1" label="First Name" label-for="firstname">
-                <b-form-input
-                  id="firstName"
-                  type="text"
-                  v-model.lazy.trim="$v.form.firstName.$model"
-                  :state="chkState('firstName')"
-                  aria-describedby="input1LiveFeedback1"
-                  placeholder="First Name"
-                  autocomplete="given-name"
-                  autofocus
-                />
-                <b-form-invalid-feedback
-                  id="input1LiveFeedback1"
-                >This is a required field and must be at least 2 characters</b-form-invalid-feedback>
-              </b-form-group>-->
-              <!-- <b-form-group id="lastNameInputGroup2" label="Last Name" label-for="lastName">
-                <b-form-input
-                  id="lastName"
-                  type="text"
-                  v-model.lazy.trim="$v.form.lastName.$model"
-                  :state="chkState('lastName')"
-                  aria-describedby="input1LiveFeedback2"
-                  placeholder="Last Name"
-                  autocomplete="family-name"
-                />
-                <b-form-invalid-feedback
-                  id="input1LiveFeedback2"
-                >This is a required field and must be at least 1 character</b-form-invalid-feedback>
-              </b-form-group>-->
-              <b-form-group id="userNameInputGroup3" label="名稱" label-for="userName">
-                <b-form-input
-                  id="userName"
-                  type="text"
-                  v-model.trim="$v.form.userName.$model"
-                  :state="chkState('userName')"
-                  aria-describedby="input1LiveFeedback3"
-                  placeholder="User Name"
-                  autocomplete="username"
-                />
-                <b-form-invalid-feedback id="input1LiveFeedback3">至少需要5個字母</b-form-invalid-feedback>
-              </b-form-group>
-              <b-form-group id="emailInputGroup4" label="電子信箱" label-for="email">
-                <b-form-input
-                  id="email"
-                  type="email"
-                  v-model.trim="$v.form.email.$model"
-                  :state="chkState('email')"
-                  aria-describedby="input1LiveFeedback4"
-                  placeholder="Email"
-                  autocomplete="email"
-                />
-                <b-form-invalid-feedback id="input1LiveFeedback4">請輸入有效的 Email 地址</b-form-invalid-feedback>
-              </b-form-group>
-              <b-row>
-                <b-col md="6">
-                  <b-form-group id="passInputGroup5" label="密碼" label-for="password">
-                    <b-form-input
-                      id="password"
-                      type="password"
-                      v-model.trim="$v.form.password.$model"
-                      :state="chkState('password')"
-                      aria-describedby="input1LiveFeedback5"
-                      placeholder="Password"
-                      autocomplete="new-password"
-                    />
-                    <b-form-invalid-feedback id="input1LiveFeedback5">密碼至少包含：數字，大寫和小寫字母，8位數以上</b-form-invalid-feedback>
-                  </b-form-group>
-                </b-col>
-                <b-col md="6">
-                  <b-form-group id="confPassInputGroup6" label="確認密碼" label-for="confirm_password">
-                    <b-form-input
-                      id="confirm_password"
-                      type="password"
-                      v-model.trim="$v.form.confirmPassword.$model"
-                      :state="chkState('confirmPassword')"
-                      aria-describedby="input1LiveFeedback6"
-                      placeholder="Confirm password"
-                      autocomplete="new-password"
-                    />
-                    <b-form-invalid-feedback id="input1LiveFeedback6">Passwords must match</b-form-invalid-feedback>
-                  </b-form-group>
-                </b-col>
-              </b-row>
-              <b-form-group :invalid-feedback="invCheck" :state="chkState('accept')">
-                <b-form-checkbox
-                  id="accept"
-                  v-model="$v.form.accept.$model"
-                  :state="chkState('accept')"
-                  aria-describedby="input1LiveFeedback7"
-                >
-                  <strong>I accept the terms of use</strong>
-                </b-form-checkbox>
-              </b-form-group>
-              <b-button
-                type="submit"
-                variant="primary"
-                :disabled="$v.form.$invalid || submitted"
-              >Submit</b-button>
-              <b-button
-                class="ml-1"
-                type="submit"
-                variant="success"
-                :disabled="!$v.form.$invalid"
-              >Validate</b-button>
-              <b-button class="ml-1" type="reset" variant="danger" :disabled="!isDirty">Reset</b-button>
-            </b-form>
-            <br />
-          </b-col>
-          <!-- <b-col lg="6">
-            <b-card :bg-variant="feedBack">
-              <pre>{{formStr}}</pre>
-            </b-card>
-          </b-col>-->
-        </b-row>
-      </b-card-body>
-    </b-card>
+    <b-row>
+      <b-col md="12" lg="8" offset-lg="2">
+        <b-card>
+          <div slot="header">
+            <strong>輸入修改資料</strong>
+          </div>
+          <b-form>
+            <b-form-group description label="輸入舊密碼：" label-for="oldPasswd" label-cols-lg="3">
+              <b-form-input id="oldPasswd" type="text" placeholder="輸入舊密碼"></b-form-input>
+            </b-form-group>
+            <hr />
+            <b-form-group description label="輸入新密碼：" label-for="newPasswd" label-cols-lg="3">
+              <b-form-input id="newPasswd" type="text" placeholder="輸入新密碼"></b-form-input>
+            </b-form-group>
+            <hr />
+            <b-form-group
+              description
+              label="再次確認新密碼："
+              label-for="confirmNewPasswd"
+              label-cols-lg="3"
+            >
+              <b-form-input id="confirmNewPasswd" type="text" placeholder="再次確認新密碼"></b-form-input>
+            </b-form-group>
+            <hr />
+
+            <div slot="footer">
+              <b-button type="submit" size="sm" variant="primary">
+                <i class="fa fa-dot-circle-o"></i> Submit
+              </b-button>
+              <b-button type="reset" size="sm" variant="danger">
+                <i class="fa fa-ban"></i> Reset
+              </b-button>
+            </div>
+          </b-form>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

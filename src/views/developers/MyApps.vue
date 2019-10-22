@@ -67,17 +67,17 @@ export default {
   },
   mounted() {
     const me = this;
-    // 初始化页面数据
+    // 初始化頁面
     // me.loadPageData();
     this.isLoading = true;
   },
   methods: {
-    loadPageData: function() {
-      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
-      this.axios
-        .get("http://127.0.0.1:8000/api/develop/appRank/2")
-        .then((this.isLoading = false));
-    }
+    // loadPageData: function() {
+    //   // axios 請求頁面資料 .then 中修改狀態值  this.isLoading = false
+    //   this.axios
+    //     .get("http://127.0.0.1:8000/api/develop/appRank/2")
+    //     .then((this.isLoading = false));
+    // }
   }
 };
 </script>
