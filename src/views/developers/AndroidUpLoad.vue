@@ -165,6 +165,7 @@
 </template>
 
 <script>
+const Swal = require('sweetalert2')
 export default {
   name: "forms",
   data() {
