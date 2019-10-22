@@ -170,6 +170,7 @@ export default {
   name: "forms",
   data() {
     return {
+      userId: sessionStorage.getItem("userId"),
       options: [],
       selected: null,
       show: true,
@@ -208,7 +209,7 @@ export default {
       this.img1 = this.$refs.img1.files[0];
       this.img2 = this.$refs.img2.files[0];
       // console.log(this.selected);
-      formData.append("memberId", 2);
+      formData.append("memberId", this.userId);
       formData.append("categoryId", this.selected);
       formData.append("appName", this.appName);
       formData.append("summary", this.summary);
