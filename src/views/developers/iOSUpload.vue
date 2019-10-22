@@ -170,6 +170,7 @@
 </template>
 
 <script>
+const Swal = require("sweetalert2");
 export default {
   name: "forms",
   data() {
@@ -213,7 +214,7 @@ export default {
       this.img1 = this.$refs.img1.files[0];
       this.img2 = this.$refs.img2.files[0];
       // console.log(this.selected);
-      formData.append("memberId",this.userId);
+      formData.append("memberId", this.userId);
       formData.append("categoryId", this.selected);
       formData.append("appName", this.appName);
       formData.append("summary", this.summary);
@@ -233,20 +234,35 @@ export default {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          console.log(res.data);
-          // options: [],
-          this.selected = null,
-          this.show = true,
-          this.appName = "",
-          this.summary = "",
-          this.introduction = "",
-          this.version = "",
-          this.tags = [],
-          this.$refs.file.value = "",
-          this.$refs.icon.value = "",
-          this.$refs.img1.value = "",
-          this.$refs.img2.value = "",
-          this.$refs.plist.value = ""
+          if (res.data.isSuccess === "True") {
+            Swal.fire({
+              type: "success",
+              title: "上傳成功",
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // console.log(res.data);
+            // options: [],
+            (this.selected = null),
+              (this.show = true),
+              (this.appName = ""),
+              (this.summary = ""),
+              (this.introduction = ""),
+              (this.version = ""),
+              (this.tags = []),
+              (this.$refs.file.value = ""),
+              (this.$refs.icon.value = ""),
+              (this.$refs.img1.value = ""),
+              (this.$refs.img2.value = ""),
+              (this.$refs.plist.value = "");
+          } else if (res.data.isSuccess === "False") {
+            Swal.fire({
+              type: "error",
+              title: res.data.reason,
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
         })
         .catch(error => {
           console.log(error);

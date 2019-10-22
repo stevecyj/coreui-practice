@@ -165,7 +165,7 @@
 </template>
 
 <script>
-const Swal = require('sweetalert2')
+const Swal = require("sweetalert2");
 export default {
   name: "forms",
   data() {
@@ -228,26 +228,40 @@ export default {
           headers: { "Content-Type": "multipart/form-data" }
         })
         .then(res => {
-          console.log(res.data);
-          // this.options = [0],
-          this.selected = null,
-          this.show = true,
-          this.appName = "",
-          this.summary = "",
-          this.introduction = "",
-          this.version = "",
-          this.tags = [],
-          this.$refs.file.value = "",
-          this.$refs.icon.value = "",
-          this.$refs.img1.value = "",
-          this.$refs.img2.value = ""
+          if (res.data.isSuccess === "True") {
+            Swal.fire({
+              type: "success",
+              title: "上傳成功",
+              showConfirmButton: false,
+              timer: 3000
+            });
+            // console.log(res.data);
+            // this.options = [0],
+            (this.selected = null),
+              (this.show = true),
+              (this.appName = ""),
+              (this.summary = ""),
+              (this.introduction = ""),
+              (this.version = ""),
+              (this.tags = []),
+              (this.$refs.file.value = ""),
+              (this.$refs.icon.value = ""),
+              (this.$refs.img1.value = ""),
+              (this.$refs.img2.value = "");
+          } else if (res.data.isSuccess === "False") {
+            Swal.fire({
+              type: "error",
+              title: res.data.reason,
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
         })
         .catch(error => {
           console.log(error);
         });
     },
     loadPageData: function() {
-      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
       this.axios
         .get("http://127.0.0.1:8000/api/develop/categories")
         .then((this.isLoading = false));
