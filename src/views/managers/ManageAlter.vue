@@ -24,7 +24,7 @@
           <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
             <div class="col-sm-10">
-              <span>{{}}</span>
+              <span>{{userName}}</span>
               <!-- <input
                 type="text"
                 class="form-control"
@@ -105,6 +105,7 @@ import EventService from "@/service/EventService.js";
 export default {
   data() {
     return {
+      userName:sessionStorage.getItem('userName'),
       input: {
         name: "",
         oldPwd: "",
