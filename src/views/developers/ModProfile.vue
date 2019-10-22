@@ -1,184 +1,131 @@
 <template>
   <div class="animated fadeIn">
-    <b-row>
-      <b-col md="12" lg="8" offset-lg="2">
-        <b-card>
-          <div slot="header">
-            <strong>輸入修改資料</strong>
-          </div>
-          <b-form>
-            <b-form-group description label="輸入舊密碼：" label-for="oldPasswd" label-cols-lg="3">
-              <b-form-input id="oldPasswd" type="text" placeholder="輸入舊密碼"></b-form-input>
-            </b-form-group>
-            <hr />
-            <b-form-group description label="輸入新密碼：" label-for="newPasswd" label-cols-lg="3">
-              <b-form-input id="newPasswd" type="text" placeholder="輸入新密碼"></b-form-input>
-            </b-form-group>
-            <hr />
-            <b-form-group
-              description
-              label="再次確認新密碼："
-              label-for="confirmNewPasswd"
-              label-cols-lg="3"
-            >
-              <b-form-input id="confirmNewPasswd" type="text" placeholder="再次確認新密碼"></b-form-input>
-            </b-form-group>
-            <hr />
+    <nav class="navbar">
+      <a class="navbar-brand">
+        <h4>
+          <b>個人資料修改</b>
+        </h4>
+      </a>
+    </nav>
 
-            <div slot="footer">
-              <b-button type="submit" size="sm" variant="primary">
-                <i class="fa fa-dot-circle-o"></i> Submit
-              </b-button>
-              <b-button type="reset" size="sm" variant="danger">
-                <i class="fa fa-ban"></i> Reset
-              </b-button>
+    <b-card no-body class="card-default">
+      <b-card-body>
+        <form>
+          <!-- <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">我的頭像</label>
+            <div class="col-sm-10 input-group">
+              <input type="text" class="form-control" placeholder="請選擇圖片" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">上傳圖片</button>
+              </div>
             </div>
-          </b-form>
-        </b-card>
-      </b-col>
-    </b-row>
+          </div>-->
+
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
+            <div class="col-sm-10">
+              <span>{{userName}}</span>
+              <!-- <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                placeholder="Name"
+                v-model.lazy="input.name"
+              />-->
+            </div>
+          </div>
+
+          <!-- <div class="form-group row">
+            <label
+              for="inputPhone"
+              class="col-sm-2 col-form-label"
+              pattern="^09\d{8}$"
+            >我的電話</label>
+            <div class="col-sm-10">
+              <input type="phone" class="form-control" id="inputPhone" placeholder="09xx-xxx-xxx" />
+            </div>
+          </div>-->
+
+          <div class="form-group row">
+            <label for="inputOldPsw" class="col-sm-2 col-form-label">請輸入密碼</label>
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputOldPsw"
+                placeholder="請輸入密碼"
+                pattern="[a-zA-Z0-9]{8,12}"
+                required
+                v-model.lazy="input.oldPwd"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputNewPsw1" class="col-sm-2 col-form-label">請輸入新的密碼</label>
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputNewPsw1"
+                placeholder="請輸入8-12位數含英文及數字之新密碼"
+                pattern="[a-zA-Z0-9]{8,12}"
+                required
+                v-model.lazy="input.newPwd"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputNewPsw2" class="col-sm-2 col-form-label">請再次確認密碼</label>
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputNewPsw2"
+                placeholder="請再次確認密碼"
+                pattern="[a-zA-Z0-9]{8,12}"
+                required
+                v-model.lazy="input.pwdCheck"
+              />
+            </div>
+          </div>
+
+          <div style="text-align: center">
+            <button type="submit" class="btn btn-primary" @click="submitButton">確認送出</button>
+          </div>
+        </form>
+      </b-card-body>
+    </b-card>
   </div>
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-import {
-  required,
-  minLength,
-  email,
-  sameAs,
-  helpers
-} from "vuelidate/lib/validators";
-
-const mustAccept = value => {
-  return Boolean(value);
-};
-const strongPass = helpers.regex(
-  "strongPass",
-  /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
-);
-
-const formShape = {
-  firstName: "",
-  lastName: "",
-  userName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-  accept: false
-};
-
+import EventService from "@/service/EventService.js";
 export default {
-  name: "ValidationForms",
   data() {
     return {
-      form: Object.assign({}, formShape),
-      feedBack: "secondary",
-      submitted: false
+      userName:sessionStorage.getItem('userName'),
+      input: {
+        name: "",
+        oldPwd: "",
+        newPwd: "",
+        pwdCheck: ""
+      }
     };
   },
-  computed: {
-    formStr() {
-      return JSON.stringify(this.form, null, 4);
-    },
-    isValid() {
-      return !this.$v.form.$anyError;
-    },
-    isDirty() {
-      return this.$v.form.$anyDirty;
-    },
-    invCheck() {
-      return "You must accept before submitting";
-    }
-  },
-  mixins: [validationMixin],
-  validations: {
-    form: {
-      firstName: {
-        required,
-        minLength: minLength(2)
-      },
-      lastName: {
-        required,
-        minLength: minLength(1)
-      },
-      userName: {
-        required,
-        minLength: minLength(5)
-      },
-      email: {
-        required,
-        email
-      },
-      password: {
-        required,
-        minLength: minLength(8),
-        strongPass
-      },
-      confirmPassword: {
-        required,
-        sameAsPassword: sameAs("password")
-      },
-      accept: {
-        required,
-        mustAccept
-      }
-    }
-  },
   methods: {
-    onSubmit() {
-      if (this.validate()) {
-        this.$nextTick(() => {
-          // submit
-          // console.log('submit:', this.formStr)
-          this.submitted = true;
-          this.feedBack = "info";
+    submitButton() {
+      let { name, oldPwdm, newPwd, pwdCheck } = this.input;
+      this.axios
+        .put("http://127.0.0.1:8000/api/Admin/1", this.input)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(error => {
+          console.log(error);
         });
-      }
-    },
-    onReset() {
-      // Reset validation
-      this.form = Object.assign({}, formShape);
-      this.submitted = false;
-      this.$nextTick(() => {
-        this.$v.$reset();
-        this.feedBack = "secondary";
-      });
-    },
-    chkState(val) {
-      const field = this.$v.form[val];
-      return !field.$dirty || !field.$invalid;
-    },
-    findFirstError(component = this) {
-      if (component.state === false) {
-        if (component.$refs.input) {
-          component.$refs.input.focus();
-          return true;
-        }
-        if (component.$refs.check) {
-          component.$refs.check.focus();
-          return true;
-        }
-      }
-      let focused = false;
-      component.$children.some(child => {
-        focused = this.findFirstError(child);
-        return focused;
-      });
-
-      return focused;
-    },
-    validate() {
-      this.$v.$touch();
-      this.$nextTick(() => this.findFirstError());
-      return this.isValid;
     }
   }
 };
 </script>
-
-<style scoped>
-.btn.disabled {
-  cursor: auto;
-}
-</style>

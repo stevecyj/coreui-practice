@@ -24,7 +24,7 @@
           <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">姓名</label>
             <div class="col-sm-10">
-              <span>{{}}</span>
+              <span>{{userName}}</span>
               <!-- <input
                 type="text"
                 class="form-control"
@@ -105,8 +105,10 @@ import EventService from "@/service/EventService.js";
 export default {
   data() {
     return {
+      userId:sessionStorage.getItem('userId'),
+      userName:sessionStorage.getItem('userName'),
       input: {
-        name: "",
+        // name: "",
         oldPwd: "",
         newPwd: "",
         pwdCheck: ""
@@ -115,9 +117,10 @@ export default {
   },
   methods: {
     submitButton() {
-      let { name, oldPwdm, newPwd, pwdCheck } = this.input;
+      // let { name, oldPwdm, newPwd, pwdCheck } = this.input;
+      let { oldPwdm, newPwd, pwdCheck } = this.input;
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/1", this.input)
+        .put("http://127.0.0.1:8000/api/Admin/" + this.userId, this.input)
         .then(res => {
           console.log(res.data);
         })

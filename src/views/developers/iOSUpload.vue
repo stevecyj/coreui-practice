@@ -8,7 +8,7 @@
           </div>
           <b-form>
             <b-form-group description label="輸入 App 名稱：" label-for="appName" label-cols-lg="3">
-              <b-form-input id="appName" type="text" placeholder="請輸入 App 名稱"></b-form-input>
+              <b-form-input id="appName" type="text" placeholder="請輸入 App 名稱" required></b-form-input>
             </b-form-group>
             <hr />
             <b-form-group
@@ -17,7 +17,7 @@
               label-align-sm="left"
               label-for="tags1"
             >
-              <b-form-input id="tags1" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input id="tags1" type="text" placeholder="請輸入 tag 名稱，2~4字以內" pattern="{2,4}" required></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -25,7 +25,7 @@
               label-align-sm="left"
               label-for="tags2"
             >
-              <b-form-input id="tags2" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input id="tags2" type="text" placeholder="請輸入 tag 名稱，2~4字以內" pattern="{2,4}" required></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -33,7 +33,7 @@
               label-align-sm="left"
               label-for="tags3"
             >
-              <b-form-input id="tags3" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input id="tags3" type="text" placeholder="請輸入 tag 名稱，2~4字以內" pattern="{2,4}" required></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -41,7 +41,7 @@
               label-align-sm="left"
               label-for="tags4"
             >
-              <b-form-input id="tags4" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input id="tags4" type="text" placeholder="請輸入 tag 名稱，2~4字以內" pattern="{2,4}" required></b-form-input>
             </b-form-group>
             <b-form-group
               label-cols-sm="3"
@@ -49,7 +49,7 @@
               label-align-sm="left"
               label-for="tags5"
             >
-              <b-form-input id="tags5" type="text" placeholder="請輸入 tag 名稱，2~4字以內"></b-form-input>
+              <b-form-input id="tags5" type="text" placeholder="請輸入 tag 名稱，2~4字以內" pattern="{2,4}" required></b-form-input>
             </b-form-group>
             <hr />
 
@@ -63,7 +63,7 @@
             </b-form-group>
             <hr />
             <b-form-group label="版本號：" label-for="changeNum" :label-cols="3">
-              <b-form-input id="changeNum" placeholder="X.X.X"></b-form-input>
+              <b-form-input id="changeNum" placeholder="X.X.X" pattern="[0-9]{1}\.[0-9]{1}\.[0-9]{1}\" required></b-form-input>
             </b-form-group>
             <hr />
             <b-form-group label="詳細說明：" label-for="introduction" :label-cols="3">

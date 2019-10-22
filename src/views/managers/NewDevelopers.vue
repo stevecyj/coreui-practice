@@ -189,14 +189,15 @@ export default {
             password: this.password
           })
           .then(res => {
-            if (res.data.isSuccess === "True") alert("新增開發人員成功");
-            console.log(res.data);
-            this.name = "";
-            this.phone = "";
-            this.email = "";
-            this.idNumber = "";
-            this.password = "";
-            // alert("新增開發人員成功");
+            if (res.data.isSuccess === "True")
+              alert("新增開發人員成功");
+              console.log(res.data);
+              this.name = "";
+              this.phone = "";
+              this.email = "";
+              this.idNumber = "";
+              this.password = "";
+              // alert("新增開發人員成功");
           })
           .catch(error => {
             if (error.response.data.errors.idNumber != undefined) {
