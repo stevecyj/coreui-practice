@@ -190,7 +190,7 @@ export default {
           })
           .then(res => {
             if (res.data.isSuccess === "True") alert("新增開發人員成功");
-            console.log(res.data);
+            // console.log(res.data);
             this.name = "";
             this.phone = "";
             this.email = "";
