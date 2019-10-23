@@ -202,19 +202,20 @@ export default {
   },
   methods: {
     click() {
-      // var appNameR = /.{1,50}/;
-      // var tagsR = /\D{2,4}/;
-      // var summaryR = /.{1,50}/;
-      // var versionR = /^[0-1]\.[0-9]*\.[0-9]$/;
-      // var introductionR = /.{1,200}/;
+      var appNameR = /.{1,50}/;
+      var summaryR = /.{1,50}/;
+      var introductionR = /.{1,200}/;
+      var tagsR = /\D{2,4}/;
+      var versionR = /^[0-1]\.[0-9]*\.[0-9]$/;
 
-      // if (
-      //   appNameR.test(this.appName) &&
-      //   tagsR.test(this.newPwd) &&
-      //   summaryR.test(this.pwdCheck)
-      //   versionR.test(this.pwdCheck)
-      //   summaintroductionRryR.test(this.pwdCheck)
-      // ) {
+      if (
+        appNameR.test(this.appName) &&
+        summaryR.test(this.summary) &&
+        introductionR.test(this.introduction) &&
+        tagsR.test(this.tags) &&
+        versionR.test(this.version) &&
+        this.selected != null
+      ) {
 
 
       // console.log(this.tags);
@@ -275,7 +276,7 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      // }
+      }
     },
     loadPageData: function() {
       this.axios
