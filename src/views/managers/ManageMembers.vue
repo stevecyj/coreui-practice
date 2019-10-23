@@ -38,7 +38,9 @@
             <td>{{event.name}}</td>
             <td>{{event.phone}}</td>
             <td>{{event.email}}</td>
-            <td>{{event.level}}</td>
+            <td v-if="event.level===1">否</td>
+            <td v-if="event.level===2">是</td>
+            <!-- <td>{{event.level}}</td> -->
             <td>
               <button
                 type="button"
@@ -96,6 +98,7 @@ export default {
         .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
         .then(res => {
           this.events = res.data;
+          alert("停權會員成功");
         })
         .catch(error => {
           console.log(error.res);
@@ -144,14 +147,13 @@ export default {
           // callback();
         };
       };
-
-      alert("停權會員成功");
     },
     restoreMember(id) {
       this.axios
         .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
         .then(res => {
           this.events = res.data;
+          alert("恢復會員成功");
         })
         .catch(error => {
           console.log(error.res);
@@ -200,8 +202,6 @@ export default {
           // callback();
         };
       };
-
-      alert("恢復會員成功");
     }
   }
 };

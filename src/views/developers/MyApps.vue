@@ -50,13 +50,14 @@ export default {
   // name: "list-groups"
   data() {
     return {
+      userId: sessionStorage.getItem("userId"),
       events: [],
       isLoading: true
     };
   },
   created() {
     this.axios
-      .get("http://127.0.0.1:8000/api/develop/appRank/2")
+      .get("http://127.0.0.1:8000/api/develop/appRank/" + this.userId)
       .then(response => {
         this.events = response.data;
         this.isLoading = false;
