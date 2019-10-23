@@ -1,5 +1,5 @@
 <template>
-  <div class="animated fadeIn">
+  <div class="animated fadeIn" style="margin-top: 25px">
     <b-row>
       <b-col md="12" lg="8" offset-lg="2">
         <b-card>

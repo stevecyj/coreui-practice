@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" style="margin-top: 25px">
     <div class="animated fadeIn">
       <div>
         <transition name="fade">
