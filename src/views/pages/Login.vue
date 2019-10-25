@@ -131,11 +131,14 @@ export default {
         // const api = "http://127.0.0.1:8000/api/login";
         const vm = this;
         this.axios
-          .post("http://127.0.0.1:8000/api/login", this.user)
+          .post(
+            "http://cyappstore.azurewebsites.net/api/member/login",
+            this.user
+          )
           .then(function(response) {
             if (response.data.isSuccess === "False") {
               console.log(response.data.isSuccess);
-              alert("密碼錯誤");
+              alert("帳號密碼錯誤");
             } else {
               var userData = response.data;
               sessionStorage.setItem("userId", userData.id);
@@ -153,7 +156,7 @@ export default {
             }
           });
       } else {
-        alert("帳號密碼錯誤");
+        // alert("");
       }
     }
   }

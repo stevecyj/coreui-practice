@@ -216,66 +216,64 @@ export default {
         versionR.test(this.version) &&
         this.selected != null
       ) {
-
-
-      // console.log(this.tags);
-      let formData = new FormData();
-      this.file = this.$refs.file.files[0];
-      this.icon = this.$refs.icon.files[0];
-      this.img1 = this.$refs.img1.files[0];
-      this.img2 = this.$refs.img2.files[0];
-      // console.log(this.selected);
-      formData.append("memberId", this.userId);
-      formData.append("categoryId", this.selected);
-      formData.append("appName", this.appName);
-      formData.append("summary", this.summary);
-      formData.append("introduction", this.introduction);
-      formData.append("version", this.version);
-      formData.append("tags", this.tags);
-      formData.append("file", this.file);
-      formData.append("icon", this.icon);
-      formData.append("img1", this.img1);
-      formData.append("img2", this.img2);
-      const config = {
-        header: { "Content-Type": "multipart/form-data" }
-      };
-      this.axios
-        .post("http://127.0.0.1:8000/api/develop/Android", formData, {
-          headers: { "Content-Type": "multipart/form-data" }
-        })
-        .then(res => {
-          if (res.data.isSuccess === "True") {
-            Swal.fire({
-              type: "success",
-              title: "上傳成功",
-              showConfirmButton: false,
-              timer: 3000
-            });
-            // console.log(res.data);
-            // this.options = [0],
-            (this.selected = null),
-            (this.show = true),
-            (this.appName = ""),
-            (this.summary = ""),
-            (this.introduction = ""),
-            (this.version = ""),
-            (this.tags = []),
-            (this.$refs.file.value = ""),
-            (this.$refs.icon.value = ""),
-            (this.$refs.img1.value = ""),
-            (this.$refs.img2.value = "");
-          } else if (res.data.isSuccess === "False") {
-            Swal.fire({
-              type: "error",
-              title: res.data.reason,
-              showConfirmButton: false,
-              timer: 3000
-            });
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        // console.log(this.tags[0]);
+        let formData = new FormData();
+        this.file = this.$refs.file.files[0];
+        this.icon = this.$refs.icon.files[0];
+        this.img1 = this.$refs.img1.files[0];
+        this.img2 = this.$refs.img2.files[0];
+        // console.log(this.selected);
+        formData.append("memberId", this.userId);
+        formData.append("categoryId", this.selected);
+        formData.append("appName", this.appName);
+        formData.append("summary", this.summary);
+        formData.append("introduction", this.introduction);
+        formData.append("version", this.version);
+        formData.append("tags", this.tags);
+        formData.append("file", this.file);
+        formData.append("icon", this.icon);
+        formData.append("img1", this.img1);
+        formData.append("img2", this.img2);
+        const config = {
+          header: { "Content-Type": "multipart/form-data" }
+        };
+        this.axios
+          .post("http://127.0.0.1:8000/api/develop/Android", formData, {
+            headers: { "Content-Type": "multipart/form-data" }
+          })
+          .then(res => {
+            if (res.data.isSuccess === "True") {
+              Swal.fire({
+                type: "success",
+                title: "上傳成功",
+                showConfirmButton: false,
+                timer: 3000
+              });
+              // console.log(res.data);
+              // this.options = [0],
+              (this.selected = null),
+                (this.show = true),
+                (this.appName = ""),
+                (this.summary = ""),
+                (this.introduction = ""),
+                (this.version = ""),
+                (this.tags = []),
+                (this.$refs.file.value = ""),
+                (this.$refs.icon.value = ""),
+                (this.$refs.img1.value = ""),
+                (this.$refs.img2.value = "");
+            } else if (res.data.isSuccess === "False") {
+              Swal.fire({
+                type: "error",
+                title: res.data.reason,
+                showConfirmButton: false,
+                timer: 3000
+              });
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
       }
     },
     loadPageData: function() {

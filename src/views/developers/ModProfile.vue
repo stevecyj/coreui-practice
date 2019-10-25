@@ -162,7 +162,7 @@ export default {
         passwordR.test(this.pwdCheck)
       ) {
         this.axios
-          .put("http://127.0.0.1:8000/api/Admin/" + this.userId, {
+          .put("http://127.0.0.1:8000/api/Admin/pwdChange/" + this.userId, {
             oldPwd: this.oldPwd,
             newPwd: this.newPwd,
             pwdCheck: this.pwdCheck
@@ -176,13 +176,11 @@ export default {
               this.pwdCheck = "";
             } else if (res.data.isSuccess === "False") {
               alert("密碼錯誤");
-              this.oldPwd = "";
-              this.newPwd = "";
-              this.pwdCheck = "";
             }
           })
           .catch(error => {
             console.log(error);
+            alert("確認密碼錯誤");
           });
       }
     }
