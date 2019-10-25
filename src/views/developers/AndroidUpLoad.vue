@@ -202,6 +202,22 @@ export default {
   },
   methods: {
     click() {
+      var appNameR = /.{1,50}/;
+      var summaryR = /.{1,50}/;
+      var introductionR = /.{1,200}/;
+      var tagsR = /\D{2,4}/;
+      var versionR = /^[0-1]\.[0-9]*\.[0-9]$/;
+
+      if (
+        appNameR.test(this.appName) &&
+        summaryR.test(this.summary) &&
+        introductionR.test(this.introduction) &&
+        tagsR.test(this.tags) &&
+        versionR.test(this.version) &&
+        this.selected != null
+      ) {
+
+
       // console.log(this.tags);
       let formData = new FormData();
       this.file = this.$refs.file.files[0];
@@ -238,16 +254,16 @@ export default {
             // console.log(res.data);
             // this.options = [0],
             (this.selected = null),
-              (this.show = true),
-              (this.appName = ""),
-              (this.summary = ""),
-              (this.introduction = ""),
-              (this.version = ""),
-              (this.tags = []),
-              (this.$refs.file.value = ""),
-              (this.$refs.icon.value = ""),
-              (this.$refs.img1.value = ""),
-              (this.$refs.img2.value = "");
+            (this.show = true),
+            (this.appName = ""),
+            (this.summary = ""),
+            (this.introduction = ""),
+            (this.version = ""),
+            (this.tags = []),
+            (this.$refs.file.value = ""),
+            (this.$refs.icon.value = ""),
+            (this.$refs.img1.value = ""),
+            (this.$refs.img2.value = "");
           } else if (res.data.isSuccess === "False") {
             Swal.fire({
               type: "error",
@@ -260,6 +276,7 @@ export default {
         .catch(error => {
           console.log(error);
         });
+      }
     },
     loadPageData: function() {
       this.axios

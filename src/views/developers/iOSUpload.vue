@@ -207,6 +207,21 @@ export default {
   },
   methods: {
     click() {
+      var appNameR = /.{1,50}/;
+      var summaryR = /.{1,50}/;
+      var introductionR = /.{1,200}/;
+      var tagsR = /\D{2,4}/;
+      var versionR = /^[0-1]\.[0-9]*\.[0-9]$/;
+
+      if (
+        appNameR.test(this.appName) &&
+        summaryR.test(this.summary) &&
+        introductionR.test(this.introduction) &&
+        tagsR.test(this.tags) &&
+        versionR.test(this.version) &&
+        this.selected != null
+      ) {
+
       let formData = new FormData();
       this.file = this.$refs.file.files[0];
       this.plist = this.$refs.plist.files[0];
@@ -243,7 +258,7 @@ export default {
             });
             // console.log(res.data);
             // options: [],
-            (this.selected = null),
+              (this.selected = null),
               (this.show = true),
               (this.appName = ""),
               (this.summary = ""),
@@ -267,6 +282,7 @@ export default {
         .catch(error => {
           console.log(error);
         });
+      }
     },
     loadPageData: function() {
       // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
