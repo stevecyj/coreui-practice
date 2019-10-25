@@ -258,7 +258,7 @@ export default {
             });
             // console.log(res.data);
             // options: [],
-            (this.selected = null),
+              (this.selected = null),
               (this.show = true),
               (this.appName = ""),
               (this.summary = ""),
