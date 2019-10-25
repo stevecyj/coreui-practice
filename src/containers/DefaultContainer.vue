@@ -47,7 +47,9 @@
       <AppSidebar fixed>
         <SidebarHeader />
         <SidebarForm />
-        <SidebarNav :navItems="nav"></SidebarNav>
+        <!-- <SidebarNav :navItems="nav"></SidebarNav> -->
+        <SidebarNav :navItems="navManage" v-if="isManage"></SidebarNav>
+        <SidebarNav :navItems="navDev" v-if="isDev"></SidebarNav>
         <SidebarFooter />
         <SidebarMinimizer />
       </AppSidebar>
@@ -79,6 +81,7 @@
 <script>
 import nav from "@/_nav";
 import navManage from "@/_navManage";
+import navDev from "@/_navDev";
 import {
   Header as AppHeader,
   SidebarToggler,
@@ -124,7 +127,12 @@ export default {
   },
   data() {
     return {
-      nav: nav.items
+      nav: nav.items,
+      navManage: navManage.items,
+      navDev: navDev.items,
+      isManage: false,
+      isDev: false,
+      userLevel : sessionStorage.getItem("userLevel")
     };
   },
   computed: {
@@ -135,7 +143,18 @@ export default {
       return this.$route.matched.filter(
         route => route.name || route.meta.label
       );
+    },    
+  },
+  created() {
+    if(this.userLevel == "2"){
+      this.isDev = true;
+      // this.isManage = false;
+      // console.log(this.isDev);
+      // console.log(this.isManage);
+    } else if(this.userLevel == "3") {
+      this.isManage = true;
     }
+
   }
 };
 </script>

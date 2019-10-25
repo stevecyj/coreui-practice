@@ -125,7 +125,7 @@ const router = new Router({
 
         {
           path: "/managers/managehome",
-          meta: { label: "管理首頁" },
+          meta: { label: "管理首頁", requiresAuth: true },
           name: "ManageHome",
           component: ManageHome
         },
@@ -137,62 +137,62 @@ const router = new Router({
         },
         {
           path: "/managers/reviewdevelopers",
-          meta: { label: "審核開發人員" },
+          meta: { label: "審核開發人員", requiresAuth: true },
           name: "ReviewDevelopers",
           component: ReviewDevelopers
         },
         {
           path: "/managers/manageapps",
-          meta: { label: "管理 Apps" },
+          meta: { label: "管理 Apps", requiresAuth: true },
           name: "ManageApps",
           component: ManageApps
         },
         {
           path: "/managers/managemembers",
-          meta: { label: "管理會員" },
+          meta: { label: "管理會員", requiresAuth: true },
           name: "ManageMembers",
           component: ManageMembers
         },
         {
           path: "/managers/manageclass",
-          meta: { label: "管理類別" },
+          meta: { label: "管理類別", requiresAuth: true },
           name: "ManageClass",
           component: ManageClass
         },
         {
           path: "/managers/newdevelopers",
-          meta: { label: "新增開發人員" },
+          meta: { label: "新增開發人員", requiresAuth: true },
           name: "NewDevelopers",
           component: NewDevelopers
         },
         {
           path: "/managers/managealter",
-          meta: { label: "個人資料修改" },
+          meta: { label: "個人資料修改", requiresAuth: true },
           name: "ManageAlter",
           component: ManageAlter
         },
 
         {
           path: "/developers/myapps",
-          meta: { label: "我的 Apps" },
+          meta: { label: "我的 Apps", requiresAuth: true },
           name: "MyApps",
           component: MyApps
         },
         {
           path: "/developers/androidupload",
-          meta: { label: "Android 上傳" },
+          meta: { label: "Android 上傳", requiresAuth: true },
           name: "AndroidUpLoad",
           component: AndroidUpLoad
         },
         {
           path: "/developers/iosupload",
-          meta: { label: "iOS 上傳" },
+          meta: { label: "iOS 上傳", requiresAuth: true },
           name: "iOSUpLoad",
           component: iOSUpLoad
         },
         {
           path: "/developers/modprofile",
-          meta: { label: "個人資料修改" },
+          meta: { label: "個人資料修改", requiresAuth: true },
           name: "modprofile",
           component: ModProfile
         }
@@ -234,7 +234,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log("to", to, "from", from, "next", next);
+  // console.log("to", to, "from", from, "next", next);
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (sessionStorage.getItem("userName")) {

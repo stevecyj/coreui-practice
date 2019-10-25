@@ -9,59 +9,9 @@ export default {
     //     text: "NEW"
     //   }
     // },
-    {
-      title: true,
-      name: "管理人員",
-      class: "",
-      wrapper: {
-        element: "",
-        attributes: {}
-      }
-    },
-    {
-      name: "管理首頁",
-      url: "/managers/managehome",
-      icon: "icon-star"
-    },
-    {
-      name: "審核 Apps",
-      url: "/managers/reviewapps",
-      icon: "icon-star"
-    },
-    {
-      name: "審核開發人員",
-      url: "/managers/reviewdevelopers",
-      icon: "icon-star"
-    },
-    {
-      name: "管理 Apps",
-      url: "/managers/manageapps",
-      icon: "icon-star"
-    },
-    {
-      name: "管理會員",
-      url: "/managers/managemembers",
-      icon: "icon-star"
-    },
-    {
-      name: "管理類別",
-      url: "/managers/manageclass",
-      icon: "icon-star"
-    },
-    {
-      name: "新增開發人員",
-      url: "/managers/newdevelopers",
-      icon: "icon-star"
-    },
-    {
-      name: "個人資料修改",
-      url: "/managers/managealter",
-      icon: "icon-star"
-    },
-
     // {
     //   title: true,
-    //   name: "開發人員",
+    //   name: "管理人員",
     //   class: "",
     //   wrapper: {
     //     element: "",
@@ -69,25 +19,75 @@ export default {
     //   }
     // },
     // {
-    //   name: "我的 Apps",
-    //   url: "/developers/myapps",
-    //   icon: "icon-pencil"
+    //   name: "管理首頁",
+    //   url: "/managers/managehome",
+    //   icon: "icon-star"
     // },
     // {
-    //   name: "Android 上傳",
-    //   url: "/developers/androidupload",
-    //   icon: "icon-drop"
+    //   name: "審核 Apps",
+    //   url: "/managers/reviewapps",
+    //   icon: "icon-star"
     // },
     // {
-    //   name: "iOS 上傳",
-    //   url: "/developers/iosupload",
-    //   icon: "icon-pencil"
+    //   name: "審核開發人員",
+    //   url: "/managers/reviewdevelopers",
+    //   icon: "icon-star"
+    // },
+    // {
+    //   name: "管理 Apps",
+    //   url: "/managers/manageapps",
+    //   icon: "icon-star"
+    // },
+    // {
+    //   name: "管理會員",
+    //   url: "/managers/managemembers",
+    //   icon: "icon-star"
+    // },
+    // {
+    //   name: "管理類別",
+    //   url: "/managers/manageclass",
+    //   icon: "icon-star"
+    // },
+    // {
+    //   name: "新增開發人員",
+    //   url: "/managers/newdevelopers",
+    //   icon: "icon-star"
     // },
     // {
     //   name: "個人資料修改",
-    //   url: "/developers/modprofile",
-    //   icon: "icon-drop"
-    // }
+    //   url: "/managers/managealter",
+    //   icon: "icon-star"
+    // },
+
+    {
+      title: true,
+      name: "開發人員",
+      class: "",
+      wrapper: {
+        element: "",
+        attributes: {}
+      }
+    },
+    {
+      name: "我的 Apps",
+      url: "/developers/myapps",
+      icon: "icon-pencil"
+    },
+    {
+      name: "Android 上傳",
+      url: "/developers/androidupload",
+      icon: "icon-drop"
+    },
+    {
+      name: "iOS 上傳",
+      url: "/developers/iosupload",
+      icon: "icon-pencil"
+    },
+    {
+      name: "個人資料修改",
+      url: "/developers/modprofile",
+      icon: "icon-drop"
+    }
 
     // {
     //   title: true,
