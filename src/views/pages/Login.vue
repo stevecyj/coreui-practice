@@ -87,7 +87,7 @@ export default {
         const vm = this;
 
         this.axios
-          .post("https://appstore.pank.org/api/member/login", this.user)
+          .post("http://127.0.0.1:8000/api/member/login", this.user)
           .then(function(response) {
             console.log(response.data);
             var userData = response.data;
@@ -99,7 +99,7 @@ export default {
             if (userData.level == 2) {
               console.log(userData);
               vm.$router.push("/managers/welcome");
-            } else if (userData.level == 1) {
+            } else if (userData.level == 2) {
               console.log(userData);
               window.alert = function(msg) {
                 var div = document.createElement("div");
