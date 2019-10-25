@@ -29,7 +29,7 @@
                       alt="placeholder"
                     ></b-img>
                   </template>
-                  <p class="mb-0">{{event.summary}}</p>
+                  <p class="mb-0" style="margin-top: 10px">{{event.summary}}</p>
                   <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
                 </b-media>
               </b-list-group-item>

@@ -122,7 +122,7 @@ export default {
       var emailR = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+(\.[a-zA-Z]+)?$/;
       var passwordR = /^[a-zA-Z0-9]{8,12}$/;
 
-      if (this.user.email == "" && this.user.password == "") {
+      if (this.user.email == "" || this.user.password == "") {
         alert("請輸入帳號密碼");
       } else if (
         emailR.test(this.user.email) &&
@@ -132,7 +132,8 @@ export default {
         const vm = this;
         this.axios
           .post(
-            "http://cyappstore.azurewebsites.net/api/member/login",
+            // "http://cyappstore.azurewebsites.net/api/member/login",
+            "http://127.0.0.1:8000/api/member/login",
             this.user
           )
           .then(function(response) {
@@ -146,7 +147,7 @@ export default {
               sessionStorage.setItem("userLevel", userData.level);
               sessionStorage.setItem("userIcon", userData.img);
               sessionStorage.setItem("isSuccess", userData.isSuccess);
-              if (userData.level == 2) {
+              if (userData.level == 2 || userData.level == 3) {
                 console.log(userData);
                 vm.$router.push("/managers/welcome");
               } else if (userData.level == 1) {
@@ -156,7 +157,7 @@ export default {
             }
           });
       } else {
-        // alert("");
+        alert("帳號密碼錯誤");
       }
     }
   }
