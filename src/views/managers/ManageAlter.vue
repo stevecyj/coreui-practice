@@ -148,6 +148,7 @@ export default {
     return {
       userId: sessionStorage.getItem("userId"),
       userName: sessionStorage.getItem("userName"),
+      userLevel: sessionStorage.getItem("userLevel"),
       oldPwd: "",
       newPwd: "",
       pwdCheck: ""
@@ -155,6 +156,7 @@ export default {
   },
   methods: {
     submitButton() {
+    console.log(this.userLevel);
       var passwordR = /^[a-zA-Z0-9]{8,12}$/;
       // let { oldPwdm, newPwd, pwdCheck } = this.input;
       if (

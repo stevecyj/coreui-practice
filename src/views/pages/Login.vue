@@ -141,7 +141,7 @@ export default {
                 sessionStorage.setItem("userLevel", userData.level);
                 sessionStorage.setItem("userIcon", userData.img);
                 sessionStorage.setItem("isSuccess", userData.isSuccess);
-                if (userData.level == 2) {
+                if ((userData.level == 2) || (userData.level == 3)) {
                   console.log(userData);
                   vm.$router.push("/managers/welcome");
                 } else if (userData.level == 1) {
