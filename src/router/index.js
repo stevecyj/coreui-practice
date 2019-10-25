@@ -101,6 +101,8 @@ const ManageAlter = () => import("@/views/managers/ManageAlter");
 const NewDevelopers = () => import("@/views/managers/NewDevelopers");
 const ManageClass = () => import("@/views/managers/ManageClass");
 
+const AppDetail = () => import("@/views/managers/AppDetail");
+
 Vue.use(Router);
 
 const router = new Router({
@@ -170,6 +172,13 @@ const router = new Router({
           meta: { label: "個人資料修改", requiresAuth: true },
           name: "ManageAlter",
           component: ManageAlter
+        },
+
+        {
+          path: "/managers/appdetail",
+          meta: { label: "詳細頁面測試" },
+          name: "AppDetail",
+          component: AppDetail
         },
 
         {

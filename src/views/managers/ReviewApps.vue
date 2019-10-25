@@ -1,5 +1,5 @@
 <template>
-  <div class="animated fadeIn">
+  <div class="animated fadeIn" style="margin-top: 25px">
     <div>
       <nav class="navbar">
         <a class="navbar-brand">
@@ -39,7 +39,8 @@
         <tbody>
           <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
             <td>{{index+1}}</td>
-            <td>{{event.appName}}</td>
+            <!-- <td>{{event.appName}}</td> -->
+            <td> <router-link to="appdetail" @click="Detail"> {{event.appName}} </router-link> </td>
             <td>{{event.summary}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
@@ -149,7 +150,32 @@ export default {
           console.log(error.res);
         });
       alert("暫時退回");
+    },
+
+    Detail() {
+        const vm = this;
+
+        this.axios
+          // .get("http://127.0.0.1:8000/api//member/App/{id}", this.user)
+          .get("http://127.0.0.1:8000/api//member/App/{id}", this.user)
+          .then(function(response) {
+            console.log(response.data);
+            var userData = response.data;
+            sessionStorage.setItem("userId", userData.id);
+            sessionStorage.setItem("userName", userData.name);
+            sessionStorage.setItem("userLevel", userData.level);
+            sessionStorage.setItem("userIcon", userData.img);
+            sessionStorage.setItem("isSuccess", userData.isSuccess);
+            if (userData.level == 2) {
+              console.log(userData);
+              vm.$router.push("/managers/welcome");
+            } else if (userData.level == 1) {
+              console.log(userData);
+            }
+          });
     }
+
+    
   }
 };
 </script>
