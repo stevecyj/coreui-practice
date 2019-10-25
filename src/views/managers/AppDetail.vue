@@ -49,55 +49,5 @@
 </template>
 
 <script>
-// import EventService from "@/service/EventService.js";
 
-// export default {
-//   data() {
-//     return {
-//       keyword: "",
-//       events: []
-//     };
-//   },
-//   created() {
-//     EventService.checkApps()
-//       .then(response => {
-//         this.events = response.data;
-//       })
-//       .catch(error => {
-//         console.log("There was an error:", error.response);
-//       });
-//   },
-//   methods: {
-//     search(keyword) {
-//       var newList = [];
-//       this.events.forEach(event => {
-//         if (event.name.indexOf(keyword) != -1) {
-//           newList.push(event);
-//         }
-//       });
-//       return newList;
-//     },
-//     CheckOK(id) {
-//       this.axios
-//         .put("http://127.0.0.1:8000/api/Admin/appCheckOk/" + id)
-//         .then(res => {
-//           this.events = res.data;
-//           console.log(res);
-//         })
-//         .catch(error => {
-//           console.log(error.res);
-//         });
-//     },
-//     goBack(id) {
-//       this.axios
-//         .put("http://127.0.0.1:8000/api/Admin/appGoBack/" + id)
-//         .then(res => {
-//           this.events = res.data;
-//         })
-//         .catch(error => {
-//           console.log(error.res);
-//         });
-//     }
-//   }
-// };
 </script>
