@@ -188,7 +188,7 @@ export default {
     // me.loadPageData();
     this.isLoading = true;
     this.axios
-      .get("http://127.0.0.1:8000/api/develop/categories")
+      .get("http://cyappstore.azurewebsites.net/api/develop/categories")
       .then(response => {
         this.options = response.data;
         for (let i = 0; i < response.data.length; i++) {
@@ -239,9 +239,13 @@ export default {
           header: { "Content-Type": "multipart/form-data" }
         };
         this.axios
-          .post("http://127.0.0.1:8000/api/develop/Android", formData, {
-            headers: { "Content-Type": "multipart/form-data" }
-          })
+          .post(
+            "http://cyappstore.azurewebsites.net/api/develop/Android",
+            formData,
+            {
+              headers: { "Content-Type": "multipart/form-data" }
+            }
+          )
           .then(res => {
             if (res.data.isSuccess === "True") {
               Swal.fire({
@@ -279,7 +283,7 @@ export default {
     },
     loadPageData: function() {
       this.axios
-        .get("http://127.0.0.1:8000/api/develop/categories")
+        .get("http://cyappstore.azurewebsites.net/api/develop/categories")
         .then((this.isLoading = false));
     }
   }

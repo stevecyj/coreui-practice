@@ -118,7 +118,7 @@ export default {
       // console.log(this.className);
       if (this.className != "") {
         this.axios
-          .post("http://127.0.0.1:8000/api/Admin/newCategory", {
+          .post("http://cyappstore.azurewebsites.net/api/Admin/newCategory", {
             category: this.className
           })
           .then(res => {

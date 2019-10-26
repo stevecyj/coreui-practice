@@ -161,7 +161,7 @@ export default {
         passwordR.test(this.password)
       ) {
         this.axios
-          .post("http://127.0.0.1:8000/api/Admin/newDeveloper", {
+          .post("http://cyappstore.azurewebsites.net/api/Admin/newDeveloper", {
             name: this.name,
             phone: this.phone,
             email: this.email,
