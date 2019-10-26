@@ -1,49 +1,33 @@
 <template>
   <div class="animated fadeIn" style="margin-top: 25px">
 
-
     <b-card no-body class="card-default">
-      <b-card-body>
-        
-<div class="container-fluid">
-	<!-- <div class="row"> -->
-		<!-- <div class="col-md-12"> -->
-		<div>
-			<div class="media" style="margin-bottom: 20px">
-				<img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="120px" height="120px" />
-				<div class="media-body">
-					<h5 style="margin-bottom: 20px">
-            {{appName}}
-					</h5> 
-            {{appSummary}}
-				</div>
-			</div>
-      <div style="margin-bottom: 20px">
-        <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
-        <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
+      <div class="container-fluid">
+        <div class="media" style="margin-top: 30px; margin-bottom: 15px">
+          <img class="img-circle" v-bind:src="appIcon" style="margin-right: 20px" width="120px" height="120px" />
+          <div class="media-body">
+            <div class="d-flex w-100 justify-content-between" style="margin-bottom: 15px">
+              <h3 class="mb-1"><b>{{appName}}</b></h3>
+              <small class="text-muted"><b>版本號：{{appVersion}}</b></small>
+            </div>
+            <h5>{{appSummary}}</h5>
+          </div>
+        </div>
+        <hr>
+        <div style="margin-top: 15px; margin-bottom: 15px">
+          <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
+          <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
+        </div>
+        <hr>
+        <div style="margin-top: 15px; margin-bottom: 15px">
+          <h5>{{appIntroduction}}</h5>
+        </div>
+        <hr>
+        <div style="margin-top: 15px; margin-bottom: 17px; text-align: right">
+          <button type="button" class="btn btn-outline-dark" @click="backTop"><b>回上一頁</b></button>
+        </div>
       </div>
-      <div style="margin-bottom: 20px">
-        {{appVersion}}
-      </div>
-      <div>
-        {{appIntroduction}}
-      </div>
-		</div>
-	<!-- </div> -->
-</div>
-
-        <!-- <img v-bind:src="events.appIcon" class="img-rounded"> -->
-                  <!-- <template v-slot:aside> -->
-                    <!-- <b-img
-                      v-bind:src="event.appIcon"
-                      class="img-circle"
-                      width="120"
-                      alt="placeholder"
-                    ></b-img> -->
-                  <!-- </template> -->
-      </b-card-body>
     </b-card>
-
 
   </div>
 </template>
@@ -56,10 +40,13 @@ export default {
       appVersion: sessionStorage.getItem("appVersion"),
       appSummary: sessionStorage.getItem("appSummary"),
       appIntroduction: sessionStorage.getItem("appIntroduction"),
-      oldPwd: "",
-      newPwd: "",
-      pwdCheck: ""
+      appIcon: sessionStorage.getItem("appIcon"),
     };
   },
+  methods: {
+    backTop() {
+      this.$router.push("/managers/reviewapps");
+    }
+  }
 }
 </script>

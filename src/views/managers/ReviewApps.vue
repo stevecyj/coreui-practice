@@ -40,9 +40,8 @@
           <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
             <td>{{index+1}}</td>
             <!-- <td>{{event.appName}}</td> -->
-            <!-- <td> <router-link to="appdetail" @submit.prevent="Detail"> {{event.appName}} </router-link> </td> -->
-            <td @click="Detail(event.id)"> <router-link to="appdetail"> {{event.appName}} </router-link> </td>
-            <!-- <td @click="Detail(event.id)">{{event.appName}}</td> -->
+            <!-- <td @click="Detail(event.id)"> <router-link to="appdetail"> {{event.appName}} </router-link> </td> -->
+            <td @click="Detail(event.id)"> <router-link to=""> {{event.appName}} </router-link> </td>
             <td>{{event.summary}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
@@ -155,6 +154,7 @@ export default {
     },
 
     Detail(id) {
+      const vm = this;
         this.axios
           .get("http://127.0.0.1:8000/api/member/App/" + id)
           .then(function(response) {
@@ -165,9 +165,19 @@ export default {
             sessionStorage.setItem("appVersion", appData.version);
             sessionStorage.setItem("appSummary", appData.summary);
             sessionStorage.setItem("appIntroduction", appData.introduction);
-            console.log(appData);
+            // console.log(appData);
+            if(id == appData.id)
+            vm.$router.push("/managers/appdetail");
           });
-    }
+    },
+
+        // onClick: function (index, value) {
+        //     //開啟新的視窗
+        //     window.open(value.url,'_blank');
+        // }, loadMore: function () {
+        //     page++;
+        //     loadPic();//載入更多
+        // }
     
   }
 };
