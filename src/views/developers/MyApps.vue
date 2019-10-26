@@ -57,7 +57,9 @@ export default {
   },
   created() {
     this.axios
-      .get("http://127.0.0.1:8000/api/develop/appRank/" + this.userId)
+      .get(
+        "http://cyappstore.azurewebsites.net/api/develop/appRank/" + this.userId
+      )
       .then(response => {
         this.events = response.data;
         this.isLoading = false;
