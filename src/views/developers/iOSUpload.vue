@@ -29,6 +29,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
+                required
                 v-model.lazy="tags[0]"
               ></b-form-input>
             </b-form-group>

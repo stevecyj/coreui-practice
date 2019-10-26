@@ -1,5 +1,5 @@
 <template>
-  <div class="animated fadeIn">
+  <div class="animated fadeIn" style="margin-top: 25px">
     <div>
       <nav class="navbar">
         <a class="navbar-brand">
@@ -39,7 +39,9 @@
         <tbody>
           <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
             <td>{{index+1}}</td>
-            <td>{{event.appName}}</td>
+            <!-- <td>{{event.appName}}</td> -->
+            <!-- <td @click="Detail(event.id)"> <router-link to="appdetail"> {{event.appName}} </router-link> </td> -->
+            <td @click="Detail(event.id)"> <router-link to=""> {{event.appName}} </router-link> </td>
             <td>{{event.summary}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
@@ -128,8 +130,14 @@ export default {
       return newList;
     },
     CheckOK(id) {
+<<<<<<< HEAD
       this.axios
         .put("https://cyappstore.azurewebsites.net/api/Admin/appCheckOk/" + id)
+=======
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appCheckOk/" + id)
+      EventService.appCheckOk(id)
+>>>>>>> class
         .then(res => {
           this.events = res.data;
           console.log(res);
@@ -140,8 +148,14 @@ export default {
       alert("確認通過");
     },
     goBack(id) {
+<<<<<<< HEAD
       this.axios
         .put("https://cyappstore.azurewebsites.net/api/Admin/appGoBack/" + id)
+=======
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appGoBack/" + id)
+      EventService.appGoBack(id)
+>>>>>>> class
         .then(res => {
           this.events = res.data;
         })
@@ -149,7 +163,35 @@ export default {
           console.log(error.res);
         });
       alert("暫時退回");
-    }
+    },
+
+    Detail(id) {
+      const vm = this;
+        // this.axios
+        //   .get("http://127.0.0.1:8000/api/member/App/" + id)
+        EventService.App(id)
+          .then(function(response) {
+            var appData = response.data;
+            sessionStorage.setItem("appId", appData.id);
+            sessionStorage.setItem("appName", appData.appName);
+            sessionStorage.setItem("appIcon", appData.appIcon);
+            sessionStorage.setItem("appVersion", appData.version);
+            sessionStorage.setItem("appSummary", appData.summary);
+            sessionStorage.setItem("appIntroduction", appData.introduction);
+            // console.log(appData);
+            if(id == appData.id)
+            vm.$router.push("/managers/appdetail");
+          });
+    },
+
+        // onClick: function (index, value) {
+        //     //開啟新的視窗
+        //     window.open(value.url,'_blank');
+        // }, loadMore: function () {
+        //     page++;
+        //     loadPic();//載入更多
+        // }
+    
   }
 };
 </script>

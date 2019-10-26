@@ -120,8 +120,9 @@ export default {
       return newList;
     },
     CheckOK(id) {
-      this.axios
-        .put("https://cyappstore.azurewebsites.net/api/Admin/devCheckOk/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/devCheckOk/" + id)
+      EventService.devCheckOk(id)
         .then(res => {
           this.events = res.data;
         })
@@ -131,8 +132,9 @@ export default {
       alert("成為開發者");
     },
     goBack(id) {
-      this.axios
-        .put("https://cyappstore.azurewebsites.net/api/Admin/devGoBack/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/devGoBack/" + id)
+      EventService.devGoBack(id)
         .then(res => {
           this.events = res.data;
         })
