@@ -135,7 +135,7 @@ export default {
     },
     stopMember(id) {
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
+        .put("https://cyappstore.azurewebsites.net/api/Admin/stopMember/" + id)
         .then(res => {
           this.events = res.data;
           alert("停權會員成功");
@@ -147,7 +147,9 @@ export default {
     },
     restoreMember(id) {
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
+        .put(
+          "https://cyappstore.azurewebsites.net/api/Admin/restoreMember/" + id
+        )
         .then(res => {
           this.events = res.data;
           alert("恢復會員成功");

@@ -129,7 +129,7 @@ export default {
     },
     CheckOK(id) {
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appCheckOk/" + id)
+        .put("https://cyappstore.azurewebsites.net/api/Admin/appCheckOk/" + id)
         .then(res => {
           this.events = res.data;
           console.log(res);
@@ -141,7 +141,7 @@ export default {
     },
     goBack(id) {
       this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appGoBack/" + id)
+        .put("https://cyappstore.azurewebsites.net/api/Admin/appGoBack/" + id)
         .then(res => {
           this.events = res.data;
         })

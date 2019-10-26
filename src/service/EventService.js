@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: `http://cyappstore.azurewebsites.net`,
+  baseURL: `https://cyappstore.azurewebsites.net`,
   withCredentials: false, // This is the default
   headers: {
     Accept: "application/json",
