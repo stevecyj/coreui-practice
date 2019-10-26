@@ -164,7 +164,7 @@ export default {
         passwordR.test(this.pwdCheck)
       ) {
         this.axios
-          .put("http://127.0.0.1:8000/api/Admin/pwdChange/" + this.userId, {
+          .put("https://cyappstore.azurewebsites.net/api/Admin/pwdChange/" + this.userId, {
             oldPwd: this.oldPwd,
             newPwd: this.newPwd,
             pwdCheck: this.pwdCheck
