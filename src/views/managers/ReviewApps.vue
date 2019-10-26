@@ -40,7 +40,9 @@
           <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
             <td>{{index+1}}</td>
             <!-- <td>{{event.appName}}</td> -->
-            <td> <router-link to="appdetail" @click="Detail"> {{event.appName}} </router-link> </td>
+            <!-- <td> <router-link to="appdetail" @submit.prevent="Detail"> {{event.appName}} </router-link> </td> -->
+            <td @click="Detail(event.id)"> <router-link to="appdetail"> {{event.appName}} </router-link> </td>
+            <!-- <td @click="Detail(event.id)">{{event.appName}}</td> -->
             <td>{{event.summary}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
@@ -152,29 +154,20 @@ export default {
       alert("暫時退回");
     },
 
-    Detail() {
-        const vm = this;
-
+    Detail(id) {
         this.axios
-          // .get("http://127.0.0.1:8000/api//member/App/{id}", this.user)
-          .get("http://127.0.0.1:8000/api//member/App/{id}", this.user)
+          .get("http://127.0.0.1:8000/api/member/App/" + id)
           .then(function(response) {
-            console.log(response.data);
-            var userData = response.data;
-            sessionStorage.setItem("userId", userData.id);
-            sessionStorage.setItem("userName", userData.name);
-            sessionStorage.setItem("userLevel", userData.level);
-            sessionStorage.setItem("userIcon", userData.img);
-            sessionStorage.setItem("isSuccess", userData.isSuccess);
-            if (userData.level == 2) {
-              console.log(userData);
-              vm.$router.push("/managers/welcome");
-            } else if (userData.level == 1) {
-              console.log(userData);
-            }
+            var appData = response.data;
+            sessionStorage.setItem("appId", appData.id);
+            sessionStorage.setItem("appName", appData.appName);
+            sessionStorage.setItem("appIcon", appData.appIcon);
+            sessionStorage.setItem("appVersion", appData.version);
+            sessionStorage.setItem("appSummary", appData.summary);
+            sessionStorage.setItem("appIntroduction", appData.introduction);
+            console.log(appData);
           });
     }
-
     
   }
 };
