@@ -134,8 +134,9 @@ export default {
       return newList;
     },
     stopMember(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
+      EventService.stopMember(id)
         .then(res => {
           this.events = res.data;
           alert("停權會員成功");
@@ -146,8 +147,9 @@ export default {
       alert("停權會員成功");
     },
     restoreMember(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
+      EventService.restoreMember(id)
         .then(res => {
           this.events = res.data;
           alert("恢復會員成功");

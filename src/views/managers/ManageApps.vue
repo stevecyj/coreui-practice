@@ -130,8 +130,9 @@ export default {
       return newList;
     },
     stopApp(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/stopApp/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/stopApp/" + id)
+      EventService.stopApp(id)
         .then(res => {
           this.events = res.data;
         })
@@ -141,8 +142,9 @@ export default {
       alert("停用APP成功");
     },
     restoreApp(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/restoreApp/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/restoreApp/" + id)
+      EventService.restoreApp(id)
         .then(res => {
           this.events = res.data;
         })

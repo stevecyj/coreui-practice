@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: `http://cyappstore.azurewebsites.net`,
+  // baseURL: `http://cyappstore.azurewebsites.net`,
+  baseURL: `https://cyappstore.azurewebsites.net`,
   withCredentials: false, // This is the default
   headers: {
     Accept: "application/json",
@@ -38,7 +39,46 @@ export default {
   classManage() {
     // return apiClient.get('/api/Admin/countCategory')
     return apiClient.get("/api/Admin/countCategory");
-  }
+  },
+
+  //審核APP
+  appCheckOk(id) {
+    return apiClient.put("/api/Admin/appCheckOk/" + id);
+  },
+  appGoBack(id) {
+    return apiClient.put("/api/Admin/appGoBack/" + id);
+  },
+  App(id) {
+    return apiClient.get("/api/member/App/" + id);
+  },
+
+  //管理APP
+  stopApp(id) {
+    return apiClient.put("/api/Admin/stopApp/" + id);
+  },
+  restoreApp(id) {
+    return apiClient.put("/api/Admin/restoreApp/" + id);
+  },
+
+  //審核開發人員
+  devCheckOk(id) {
+    return apiClient.put("/api/Admin/devCheckOk/" + id);
+  },
+  devGoBack(id) {
+    return apiClient.put("/api/Admin/devGoBack/" + id);
+  },
+  
+  //管理會員
+  stopMember(id) {
+    return apiClient.put("/api/Admin/stopMember/" + id);
+  },
+  restoreMember(id) {
+    return apiClient.put("/api/Admin/restoreMember/" + id);
+  },
+
+  
+  
+
   //新增開發者
   // developersNew(){
   // return apiClient.get('/api/Admin/newDeveloper')

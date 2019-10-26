@@ -130,8 +130,9 @@ export default {
       return newList;
     },
     CheckOK(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appCheckOk/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appCheckOk/" + id)
+      EventService.appCheckOk(id)
         .then(res => {
           this.events = res.data;
           console.log(res);
@@ -142,8 +143,9 @@ export default {
       alert("確認通過");
     },
     goBack(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appGoBack/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appGoBack/" + id)
+      EventService.appGoBack(id)
         .then(res => {
           this.events = res.data;
         })
@@ -155,8 +157,9 @@ export default {
 
     Detail(id) {
       const vm = this;
-        this.axios
-          .get("http://127.0.0.1:8000/api/member/App/" + id)
+        // this.axios
+        //   .get("http://127.0.0.1:8000/api/member/App/" + id)
+        EventService.App(id)
           .then(function(response) {
             var appData = response.data;
             sessionStorage.setItem("appId", appData.id);

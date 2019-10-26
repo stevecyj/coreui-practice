@@ -132,7 +132,7 @@ export default {
         const vm = this;
         this.axios
           .post(
-            "http://cyappstore.azurewebsites.net/api/member/login",
+            "https://cyappstore.azurewebsites.net/api/member/login",
             // "http://127.0.0.1:8000/api/member/login",
             this.user
           )
