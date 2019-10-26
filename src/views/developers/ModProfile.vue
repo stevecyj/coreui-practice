@@ -163,7 +163,7 @@ export default {
       ) {
         this.axios
           .put(
-            "http://cyappstore.azurewebsites.net/api/Admin/pwdChange/" +
+            "https://cyappstore.azurewebsites.net/api/Admin/pwdChange/" +
               this.userId,
             {
               oldPwd: this.oldPwd,

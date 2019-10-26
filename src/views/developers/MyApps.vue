@@ -58,7 +58,8 @@ export default {
   created() {
     this.axios
       .get(
-        "http://cyappstore.azurewebsites.net/api/develop/appRank/" + this.userId
+        "https://cyappstore.azurewebsites.net/api/develop/appRank/" +
+          this.userId
       )
       .then(response => {
         this.events = response.data;

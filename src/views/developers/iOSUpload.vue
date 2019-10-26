@@ -193,7 +193,7 @@ export default {
     // me.loadPageData();
     this.isLoading = true;
     this.axios
-      .get("http://cyappstore.azurewebsites.net/api/develop/categories")
+      .get("https://cyappstore.azurewebsites.net/api/develop/categories")
       .then(response => {
         this.options = response.data;
         for (let i = 0; i < response.data.length; i++) {
@@ -246,7 +246,7 @@ export default {
         };
         this.axios
           .post(
-            "http://cyappstore.azurewebsites.net/api/develop/Ios",
+            "https://cyappstore.azurewebsites.net/api/develop/Ios",
             formData,
             {
               headers: { "Content-Type": "multipart/form-data" }
@@ -289,9 +289,9 @@ export default {
       }
     },
     loadPageData: function() {
-      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
+      // axios 請求頁面資料 .then 中修改狀態值  this.isLoading = false
       this.axios
-        .get("http://cyappstore.azurewebsites.net/api/develop/categories")
+        .get("https://cyappstore.azurewebsites.net/api/develop/categories")
         .then((this.isLoading = false));
     }
   }
