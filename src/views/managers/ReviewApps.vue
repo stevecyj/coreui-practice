@@ -1,6 +1,11 @@
 <template>
   <div class="animated fadeIn" style="margin-top: 25px">
     <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
+    <div>
       <nav class="navbar">
         <a class="navbar-brand">
           <h4>
@@ -63,6 +68,7 @@
 </template>
 
 <script>
+import Loading from "@/views/loading";
 window.alert = function(msg) {
   var div = document.createElement("div");
   div.innerHTML =
@@ -106,16 +112,21 @@ window.alert = function(msg) {
 import EventService from "@/service/EventService.js";
 
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       keyword: "",
-      events: []
+      events: [],
+      isLoading: true
     };
   },
   created() {
     EventService.checkApps()
       .then(response => {
         this.events = response.data;
+        this.isLoading = false;
         // console.log(this.events);
       })
       .catch(error => {
@@ -190,4 +201,13 @@ export default {
   }
 };
 </script>
-
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

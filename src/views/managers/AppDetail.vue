@@ -1,5 +1,10 @@
 <template>
   <div class="animated fadeIn" style="margin-top: 25px">
+    <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
     <b-card no-body class="card-default">
       <div class="container-fluid">
         <div class="media" style="margin-top: 30px; margin-bottom: 15px">
@@ -55,7 +60,11 @@
 </template>
 
 <script>
+import Loading from "@/views/loading";
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       appName: sessionStorage.getItem("appName"),
@@ -70,13 +79,27 @@ export default {
         sessionStorage.getItem("appImg1"),
       appImg2:
         "http://cyappstore.azurewebsites.net" +
-        sessionStorage.getItem("appImg2")
+        sessionStorage.getItem("appImg2"),
+      isLoading: true
     };
   },
   methods: {
     backTop() {
       this.$router.push("/managers/reviewapps");
     }
+  },
+  mounted() {
+    this.isLoading = false;
   }
 };
 </script>
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>
