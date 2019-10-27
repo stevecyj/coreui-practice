@@ -116,6 +116,7 @@ export default {
     EventService.checkApps()
       .then(response => {
         this.events = response.data;
+        // console.log(this.events);
       })
       .catch(error => {
         console.log("There was an error:", error.response);
@@ -161,6 +162,11 @@ export default {
       const vm = this;
       // this.axios
       //   .get("http://127.0.0.1:8000/api/member/App/" + id)
+      EventService.appImg(id).then(function(response) {
+        console.log(response.data);
+        sessionStorage.setItem("appImg1", response.data[0].screenShot);
+        sessionStorage.setItem("appImg2", response.data[1].screenShot);
+      });
       EventService.App(id).then(function(response) {
         var appData = response.data;
         sessionStorage.setItem("appId", appData.id);

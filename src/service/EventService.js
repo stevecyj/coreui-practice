@@ -51,6 +51,9 @@ export default {
   App(id) {
     return apiClient.get("/api/member/App/" + id);
   },
+  appImg(id) {
+    return apiClient.get("/api/member/Appimg/" + id);
+  },
 
   //管理APP
   stopApp(id) {

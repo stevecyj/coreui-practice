@@ -59,7 +59,7 @@ export default {
       userIcon:
         // "http://127.0.0.1:8000" +
 
-        "http://cyappstore.azurewebsites.net" +
+        // "http://cyappstore.azurewebsites.net" +
         sessionStorage.getItem("userIcon"),
       itemsCount: 42
     };

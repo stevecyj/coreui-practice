@@ -1,34 +1,56 @@
 <template>
   <div class="animated fadeIn" style="margin-top: 25px">
-
     <b-card no-body class="card-default">
       <div class="container-fluid">
         <div class="media" style="margin-top: 30px; margin-bottom: 15px">
-          <img class="img-circle" v-bind:src="appIcon" style="margin-right: 20px" width="120px" height="120px" />
+          <img
+            class="img-circle"
+            v-bind:src="appIcon"
+            style="margin-right: 20px"
+            width="120px"
+            height="120px"
+          />
           <div class="media-body">
             <div class="d-flex w-100 justify-content-between" style="margin-bottom: 15px">
-              <h3 class="mb-1"><b>{{appName}}</b></h3>
-              <small class="text-muted"><b>版本號：{{appVersion}}</b></small>
+              <h3 class="mb-1">
+                <b>{{appName}}</b>
+              </h3>
+              <small class="text-muted">
+                <b>版本號：{{appVersion}}</b>
+              </small>
             </div>
             <h5>{{appSummary}}</h5>
           </div>
         </div>
-        <hr>
+        <hr />
         <div style="margin-top: 15px; margin-bottom: 15px">
-          <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
-          <img class="img-rounded" src="https://www.layoutit.com/img/sports-q-c-64-64-8.jpg" style="margin-right: 20px" width="180px" height="240px" />
+          <img
+            class="img-rounded"
+            v-bind:src="appImg1"
+            style="margin-right: 20px"
+            width="180px"
+            height="240px"
+          />
+          <img
+            class="img-rounded"
+            v-bind:src="appImg2"
+            style="margin-right: 20px"
+            width="180px"
+            height="240px"
+          />
         </div>
-        <hr>
+        <hr />
         <div style="margin-top: 15px; margin-bottom: 15px">
           <h5>{{appIntroduction}}</h5>
         </div>
-        <hr>
+        <hr />
         <div style="margin-top: 15px; margin-bottom: 17px; text-align: right">
-          <button type="button" class="btn btn-outline-dark" @click="backTop"><b>回上一頁</b></button>
+          <button type="button" class="btn btn-outline-dark" @click="backTop">
+            <b>回上一頁</b>
+          </button>
         </div>
       </div>
     </b-card>
-
   </div>
 </template>
 
@@ -40,7 +62,15 @@ export default {
       appVersion: sessionStorage.getItem("appVersion"),
       appSummary: sessionStorage.getItem("appSummary"),
       appIntroduction: sessionStorage.getItem("appIntroduction"),
-      appIcon: sessionStorage.getItem("appIcon"),
+      appIcon:
+        "http://cyappstore.azurewebsites.net" +
+        sessionStorage.getItem("appIcon"),
+      appImg1:
+        "http://cyappstore.azurewebsites.net" +
+        sessionStorage.getItem("appImg1"),
+      appImg2:
+        "http://cyappstore.azurewebsites.net" +
+        sessionStorage.getItem("appImg2")
     };
   },
   methods: {
@@ -48,5 +78,5 @@ export default {
       this.$router.push("/managers/reviewapps");
     }
   }
-}
+};
 </script>

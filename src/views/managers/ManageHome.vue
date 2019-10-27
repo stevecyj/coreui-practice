@@ -33,7 +33,7 @@
       <table class="table" style="table-layout: fixed;">
         <tr>
           <th scope="row" width="10%">No.</th>
-          <td v-for="(event,index) in events.top5" v-bind:key="event.id">{{index+1}}</td>
+          <td v-for="(event,index) in events.top5" v-bind:key="event.id">第 {{index+1}} 名</td>
         </tr>
         <tr>
           <th scope="row">APP名稱</th>
@@ -59,6 +59,7 @@ export default {
       .then(response => {
         this.events = response.data;
         // console.log(response);
+        console.log(this.events);
       })
       .catch(error => {
         console.log("There was an error:", error.response);
