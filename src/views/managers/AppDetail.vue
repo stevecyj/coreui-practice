@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     backTop() {
-      this.$router.push("/managers/reviewapps");
+      this.$router.go(-1);
     }
   },
   mounted() {
