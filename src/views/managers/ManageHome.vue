@@ -1,5 +1,10 @@
 <template>
   <div class="animated fadeIn">
+    <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
     <nav class="navbar">
       <a class="navbar-brand">
         <h4>
@@ -33,7 +38,7 @@
       <table class="table" style="table-layout: fixed;">
         <tr>
           <th scope="row" width="10%">No.</th>
-          <td v-for="(event,index) in events.top5" v-bind:key="event.id">{{index+1}}</td>
+          <td v-for="(event,index) in events.top5" v-bind:key="event.id">第 {{index+1}} 名</td>
         </tr>
         <tr>
           <th scope="row">APP名稱</th>
@@ -46,19 +51,25 @@
 </template>
 
 <script>
+import Loading from "@/views/loading";
 import EventService from "@/service/EventService.js";
-
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
-      events: []
+      events: [],
+      isLoading: true
     };
   },
   created() {
     EventService.homePage()
       .then(response => {
         this.events = response.data;
+        this.isLoading = false;
         // console.log(response);
+        console.log(this.events);
       })
       .catch(error => {
         console.log("There was an error:", error.response);
@@ -66,3 +77,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

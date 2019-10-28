@@ -155,7 +155,7 @@ export default {
   },
   methods: {
     submitButton() {
-    console.log(this.userLevel);
+      console.log(this.userLevel);
       var passwordR = /^[a-zA-Z0-9]{8,12}$/;
       // let { oldPwdm, newPwd, pwdCheck } = this.input;
       if (
@@ -164,11 +164,15 @@ export default {
         passwordR.test(this.pwdCheck)
       ) {
         this.axios
-          .put("http://127.0.0.1:8000/api/Admin/pwdChange/" + this.userId, {
-            oldPwd: this.oldPwd,
-            newPwd: this.newPwd,
-            pwdCheck: this.pwdCheck
-          })
+          .put(
+            "https://cyappstore.azurewebsites.net/api/Admin/pwdChange/" +
+              this.userId,
+            {
+              oldPwd: this.oldPwd,
+              newPwd: this.newPwd,
+              pwdCheck: this.pwdCheck
+            }
+          )
           .then(res => {
             // console.log(res.data);
             if (res.data.isSuccess === "True") {

@@ -42,7 +42,7 @@
                       <b-button variant="primary" class="px-4" type="submit">登入</b-button>
                     </b-col>
                     <b-col cols="6" class="text-right">
-                      <b-button variant="link" class="px-0">忘記密碼?</b-button>
+                      <!-- <b-button variant="link" class="px-0">忘記密碼?</b-button> -->
                     </b-col>
                   </b-row>
                 </b-form>

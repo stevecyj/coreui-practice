@@ -1,6 +1,11 @@
 <template>
   <div class="animated fadeIn">
     <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
+    <div>
       <nav class="navbar">
         <a class="navbar-brand">
           <h4>
@@ -64,6 +69,7 @@
   </div>
 </template>
 <script>
+import Loading from "@/views/loading";
 window.alert = function(msg) {
   var div = document.createElement("div");
   div.innerHTML =
@@ -107,16 +113,21 @@ window.alert = function(msg) {
 import EventService from "@/service/EventService.js";
 
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       keyword: "",
-      events: []
+      events: [],
+      isLoading: true
     };
   },
   created() {
     EventService.memberManage()
       .then(response => {
         this.events = response.data;
+        this.isLoading = false;
         // console.log("data---", response.data);
       })
       .catch(error => {
@@ -134,8 +145,9 @@ export default {
       return newList;
     },
     stopMember(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/stopMember/" + id)
+      EventService.stopMember(id)
         .then(res => {
           this.events = res.data;
           alert("停權會員成功");
@@ -146,8 +158,9 @@ export default {
       alert("停權會員成功");
     },
     restoreMember(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
+      // this.axios
+      //   .put("http://127.0.0.1:8000/api/Admin/restoreMember/" + id)
+      EventService.restoreMember(id)
         .then(res => {
           this.events = res.data;
           alert("恢復會員成功");
@@ -160,3 +173,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

@@ -1,5 +1,10 @@
 <template>
   <div class="animated fadeIn">
+    <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
     <nav class="navbar">
       <a class="navbar-brand">
         <h4>
@@ -51,6 +56,7 @@
   </div>
 </template>
 <script>
+import Loading from "@/views/loading";
 window.alert = function(msg) {
   var div = document.createElement("div");
   div.innerHTML =
@@ -94,11 +100,15 @@ window.alert = function(msg) {
 import EventService from "@/service/EventService.js";
 
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       className: "",
       events: [],
-      each: []
+      each: [],
+      isLoading: true
     };
   },
   created() {
@@ -107,6 +117,7 @@ export default {
         console.log(response.data);
         this.events = response.data.all;
         this.each = response.data.each;
+        this.isLoading = false;
       })
       .catch(error => {
         console.log("There was an error:", error.response);
@@ -118,7 +129,7 @@ export default {
       // console.log(this.className);
       if (this.className != "") {
         this.axios
-          .post("http://127.0.0.1:8000/api/Admin/newCategory", {
+          .post("https://cyappstore.azurewebsites.net/api/Admin/newCategory", {
             category: this.className
           })
           .then(res => {
@@ -137,3 +148,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

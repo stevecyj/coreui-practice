@@ -20,9 +20,18 @@
       </b-link>-->
       <SidebarToggler class="d-md-down-none" display="lg" :defaultOpen="true" />
       <b-navbar-nav class="d-md-down-none">
-        <b-nav-item class="px-3" to="/developers/myapps">我的 Apps</b-nav-item>
-        <b-nav-item class="px-3" to="/developers/androidupload" exact>Android 上傳</b-nav-item>
-        <b-nav-item class="px-3" to="/developers/iosupload" exact>iOS 上傳</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/managehome" v-if="isManage">管理首頁</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/reviewapps" v-if="isManage">審核 Apps</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/reviewdevelopers" v-if="isManage">審核 開發人員</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/manageapps" v-if="isManage">管理 Apps</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/managemembers" v-if="isManage">管理會員</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/manageclass" v-if="isManage">管理類別</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/newdevelopers" v-if="isManage">新增開發人員</b-nav-item>
+        <b-nav-item class="px-3" to="/managers/managealter" v-if="isManage">個人資料修改</b-nav-item>
+        <b-nav-item class="px-3" to="/developers/myapps" v-if="isDev">我的 Apps</b-nav-item>
+        <b-nav-item class="px-3" to="/developers/androidupload" exact v-if="isDev">Android 上傳</b-nav-item>
+        <b-nav-item class="px-3" to="/developers/iosupload" exact v-if="isDev">iOS 上傳</b-nav-item>
+        <b-nav-item class="px-3" to="/developers/modprofile" exact v-if="isDev">個人資料修改</b-nav-item>
         <!-- <b-nav-item class="px-3">Settings</b-nav-item> -->
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
@@ -132,7 +141,7 @@ export default {
       navDev: navDev.items,
       isManage: false,
       isDev: false,
-      userLevel : sessionStorage.getItem("userLevel")
+      userLevel: sessionStorage.getItem("userLevel")
     };
   },
   computed: {
@@ -143,18 +152,17 @@ export default {
       return this.$route.matched.filter(
         route => route.name || route.meta.label
       );
-    },    
+    }
   },
   created() {
-    if(this.userLevel == "2"){
+    if (this.userLevel == "2") {
       this.isDev = true;
       // this.isManage = false;
       // console.log(this.isDev);
       // console.log(this.isManage);
-    } else if(this.userLevel == "3") {
+    } else if (this.userLevel == "3") {
       this.isManage = true;
     }
-
   }
 };
 </script>

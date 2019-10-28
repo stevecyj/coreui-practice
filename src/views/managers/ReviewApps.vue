@@ -1,5 +1,10 @@
 <template>
-  <div class="animated fadeIn">
+  <div class="animated fadeIn" style="margin-top: 25px">
+    <div>
+      <transition name="fade">
+        <loading v-if="isLoading"></loading>
+      </transition>
+    </div>
     <div>
       <nav class="navbar">
         <a class="navbar-brand">
@@ -24,7 +29,7 @@
       </nav>
     </div>
 
-    <b-card no-body class="card-default" style="text-align: center">
+    <b-card no-body class="card-default" style="text-align: left">
       <table class="table" style="table-layout:fixed;">
         <thead>
           <tr>
@@ -39,7 +44,11 @@
         <tbody>
           <tr v-for="(event,index) in search(keyword)" v-bind:key="event.id">
             <td>{{index+1}}</td>
-            <td>{{event.appName}}</td>
+            <!-- <td>{{event.appName}}</td> -->
+            <!-- <td @click="Detail(event.id)"> <router-link to="appdetail"> {{event.appName}} </router-link> </td> -->
+            <td @click="Detail(event.id)">
+              <router-link to>{{event.appName}}</router-link>
+            </td>
             <td>{{event.summary}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
@@ -59,6 +68,7 @@
 </template>
 
 <script>
+import Loading from "@/views/loading";
 window.alert = function(msg) {
   var div = document.createElement("div");
   div.innerHTML =
@@ -102,16 +112,22 @@ window.alert = function(msg) {
 import EventService from "@/service/EventService.js";
 
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       keyword: "",
-      events: []
+      events: [],
+      isLoading: true
     };
   },
   created() {
     EventService.checkApps()
       .then(response => {
         this.events = response.data;
+        this.isLoading = false;
+        // console.log(this.events);
       })
       .catch(error => {
         console.log("There was an error:", error.response);
@@ -128,8 +144,9 @@ export default {
       return newList;
     },
     CheckOK(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appCheckOk/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appCheckOk/" + id)
+      EventService.appCheckOk(id)
         .then(res => {
           this.events = res.data;
           console.log(res);
@@ -140,8 +157,9 @@ export default {
       alert("確認通過");
     },
     goBack(id) {
-      this.axios
-        .put("http://127.0.0.1:8000/api/Admin/appGoBack/" + id)
+      // this.axios
+      //   .put("https://cyappstore.azurewebsites.net/api/Admin/appGoBack/" + id)
+      EventService.appGoBack(id)
         .then(res => {
           this.events = res.data;
         })
@@ -149,8 +167,47 @@ export default {
           console.log(error.res);
         });
       alert("暫時退回");
+    },
+
+    Detail(id) {
+      const vm = this;
+      // this.axios
+      //   .get("http://127.0.0.1:8000/api/member/App/" + id)
+      EventService.appImg(id).then(function(response) {
+        console.log(response.data);
+        sessionStorage.setItem("appImg1", response.data[0].screenShot);
+        sessionStorage.setItem("appImg2", response.data[1].screenShot);
+      });
+      EventService.App(id).then(function(response) {
+        var appData = response.data;
+        sessionStorage.setItem("appId", appData.id);
+        sessionStorage.setItem("appName", appData.appName);
+        sessionStorage.setItem("appIcon", appData.appIcon);
+        sessionStorage.setItem("appVersion", appData.version);
+        sessionStorage.setItem("appSummary", appData.summary);
+        sessionStorage.setItem("appIntroduction", appData.introduction);
+        // console.log(appData);
+        if (id == appData.id) vm.$router.push("/managers/appdetail");
+      });
     }
+
+    // onClick: function (index, value) {
+    //     //開啟新的視窗
+    //     window.open(value.url,'_blank');
+    // }, loadMore: function () {
+    //     page++;
+    //     loadPic();//載入更多
+    // }
   }
 };
 </script>
-
+<style scoped>
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>

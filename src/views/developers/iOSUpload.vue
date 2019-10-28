@@ -29,6 +29,7 @@
                 type="text"
                 placeholder="請輸入 tag 名稱，2~4字以內"
                 pattern="\D{2,4}"
+                required
                 v-model.lazy="tags[0]"
               ></b-form-input>
             </b-form-group>
@@ -192,7 +193,7 @@ export default {
     // me.loadPageData();
     this.isLoading = true;
     this.axios
-      .get("http://127.0.0.1:8000/api/develop/categories")
+      .get("https://cyappstore.azurewebsites.net/api/develop/categories")
       .then(response => {
         this.options = response.data;
         for (let i = 0; i < response.data.length; i++) {
@@ -221,73 +222,76 @@ export default {
         versionR.test(this.version) &&
         this.selected != null
       ) {
-
-      let formData = new FormData();
-      this.file = this.$refs.file.files[0];
-      this.plist = this.$refs.plist.files[0];
-      this.icon = this.$refs.icon.files[0];
-      this.img1 = this.$refs.img1.files[0];
-      this.img2 = this.$refs.img2.files[0];
-      // console.log(this.selected);
-      formData.append("memberId", this.userId);
-      formData.append("categoryId", this.selected);
-      formData.append("appName", this.appName);
-      formData.append("summary", this.summary);
-      formData.append("introduction", this.introduction);
-      formData.append("version", this.version);
-      formData.append("tags", this.tags);
-      formData.append("file", this.file);
-      formData.append("plist", this.plist);
-      formData.append("icon", this.icon);
-      formData.append("img1", this.img1);
-      formData.append("img2", this.img2);
-      const config = {
-        header: { "Content-Type": "multipart/form-data" }
-      };
-      this.axios
-        .post("http://127.0.0.1:8000/api/develop/Ios", formData, {
-          headers: { "Content-Type": "multipart/form-data" }
-        })
-        .then(res => {
-          if (res.data.isSuccess === "True") {
-            Swal.fire({
-              type: "success",
-              title: "上傳成功",
-              showConfirmButton: false,
-              timer: 3000
-            });
-            // console.log(res.data);
-            // options: [],
+        let formData = new FormData();
+        this.file = this.$refs.file.files[0];
+        this.plist = this.$refs.plist.files[0];
+        this.icon = this.$refs.icon.files[0];
+        this.img1 = this.$refs.img1.files[0];
+        this.img2 = this.$refs.img2.files[0];
+        // console.log(this.selected);
+        formData.append("memberId", this.userId);
+        formData.append("categoryId", this.selected);
+        formData.append("appName", this.appName);
+        formData.append("summary", this.summary);
+        formData.append("introduction", this.introduction);
+        formData.append("version", this.version);
+        formData.append("tags", this.tags);
+        formData.append("file", this.file);
+        formData.append("plist", this.plist);
+        formData.append("icon", this.icon);
+        formData.append("img1", this.img1);
+        formData.append("img2", this.img2);
+        const config = {
+          header: { "Content-Type": "multipart/form-data" }
+        };
+        this.axios
+          .post(
+            "https://cyappstore.azurewebsites.net/api/develop/Ios",
+            formData,
+            {
+              headers: { "Content-Type": "multipart/form-data" }
+            }
+          )
+          .then(res => {
+            if (res.data.isSuccess === "True") {
+              Swal.fire({
+                type: "success",
+                title: "上傳成功",
+                showConfirmButton: false,
+                timer: 3000
+              });
+              // console.log(res.data);
+              // options: [],
               (this.selected = null),
-              (this.show = true),
-              (this.appName = ""),
-              (this.summary = ""),
-              (this.introduction = ""),
-              (this.version = ""),
-              (this.tags = []),
-              (this.$refs.file.value = ""),
-              (this.$refs.icon.value = ""),
-              (this.$refs.img1.value = ""),
-              (this.$refs.img2.value = ""),
-              (this.$refs.plist.value = "");
-          } else if (res.data.isSuccess === "False") {
-            Swal.fire({
-              type: "error",
-              title: res.data.reason,
-              showConfirmButton: false,
-              timer: 3000
-            });
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+                (this.show = true),
+                (this.appName = ""),
+                (this.summary = ""),
+                (this.introduction = ""),
+                (this.version = ""),
+                (this.tags = []),
+                (this.$refs.file.value = ""),
+                (this.$refs.icon.value = ""),
+                (this.$refs.img1.value = ""),
+                (this.$refs.img2.value = ""),
+                (this.$refs.plist.value = "");
+            } else if (res.data.isSuccess === "False") {
+              Swal.fire({
+                type: "error",
+                title: res.data.reason,
+                showConfirmButton: false,
+                timer: 3000
+              });
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
       }
     },
     loadPageData: function() {
-      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
+      // axios 請求頁面資料 .then 中修改狀態值  this.isLoading = false
       this.axios
-        .get("http://127.0.0.1:8000/api/develop/categories")
+        .get("https://cyappstore.azurewebsites.net/api/develop/categories")
         .then((this.isLoading = false));
     }
   }
