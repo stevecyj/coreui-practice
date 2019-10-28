@@ -29,13 +29,14 @@
       </nav>
     </div>
 
-    <b-card no-body class="card-default" style="text-align: left">
+    <b-card no-body class="card-default" style="text-align: center">
       <table class="table" style="table-layout:fixed;">
         <thead>
           <tr>
-            <th scope="col" width="10%">No.</th>
+            <th scope="col" width="5%">No.</th>
             <th scope="col">APP名稱</th>
             <th scope="col" width="35%">簡介</th>
+            <th scope="col" width="75px">系統</th>
             <th scope="col">開發人員</th>
             <th scope="col" width="100px">上傳日期</th>
             <th scope="col" width="150px">是否同意</th>
@@ -49,7 +50,8 @@
             <td @click="Detail(event.id)">
               <router-link to>{{event.appName}}</router-link>
             </td>
-            <td>{{event.summary}}</td>
+            <td style="text-align: left">{{event.summary}}</td>
+            <td>{{event.device}}</td>
             <td>{{event.name}}</td>
             <td>{{event.created_at}}</td>
             <td>
