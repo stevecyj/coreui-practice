@@ -72,13 +72,13 @@ export default {
       appSummary: sessionStorage.getItem("appSummary"),
       appIntroduction: sessionStorage.getItem("appIntroduction"),
       appIcon:
-        "http://cyappstore.azurewebsites.net" +
+        "https://cyappstore.azurewebsites.net" +
         sessionStorage.getItem("appIcon"),
       appImg1:
-        "http://cyappstore.azurewebsites.net" +
+        "https://cyappstore.azurewebsites.net" +
         sessionStorage.getItem("appImg1"),
       appImg2:
-        "http://cyappstore.azurewebsites.net" +
+        "https://cyappstore.azurewebsites.net" +
         sessionStorage.getItem("appImg2"),
       isLoading: true
     };
