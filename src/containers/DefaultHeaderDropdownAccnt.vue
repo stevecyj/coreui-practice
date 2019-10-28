@@ -57,8 +57,9 @@ export default {
   data: () => {
     return {
       userIcon:
-        // "http://cyappstore.azurewebsites.net" +
-        "http://127.0.0.1:8000" + sessionStorage.getItem("userIcon"),
+        "https://cyappstore.azurewebsites.net" +
+        // "http://127.0.0.1:8000" +
+        sessionStorage.getItem("userIcon"),
       itemsCount: 42
     };
   },
